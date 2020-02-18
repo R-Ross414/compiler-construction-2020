@@ -1,0 +1,3 @@
+## Required Text
+
+We will follow the book [Implementing Programming Languages](http://www.grammaticalframework.org/ipl-book/) by [Aarne Ranta](http://www.cse.chalmers.se/~aarne/). Currently, the plan is to work through Chapters 2 - 6, which are available [online](http://www.cse.chalmers.se/edu/year/2012/course/DAT150/lectures/plt-book.pdf).  There is also a [list of errata](https://github.com/andreasabel/plt-errata). 
