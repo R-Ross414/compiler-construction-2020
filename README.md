@@ -18,6 +18,8 @@
 
 - [Lecture by Lecture](lecture-by-lecture.md)  
 
+- [Tutoring](tutoring.pdf)  
+
 **Acknowledgements:**
 
 This course was developed for the students at Chapman University by myself and Samuel Balco. 
