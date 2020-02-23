@@ -1,6 +1,6 @@
 # BNFC installation
 
-The [BNFC homepage](http://bnfc.digitalgrammars.com/) is the first place to go, but installation instructions in the [BNFC tutorial](http://bnfc.digitalgrammars.com/tutorial/bnfc-tutorial.html) are out of date, so we need to work a bit to find our way. I will add information here as we go along and learn more about the best way to get this done. Let me know about anything that may be useful to add. 
+The [BNFC homepage](http://bnfc.digitalgrammars.com/) is the first place to go, but installation instructions in the [BNFC tutorial](http://bnfc.digitalgrammars.com/tutorial/bnfc-tutorial.html) did not work for me as described there. I will add information here as we go along and learn more about the best way to get this done. Let me know about anything that may be useful to add. 
 
 (Thanks to Andreas Abel for valuable advice.)
 
@@ -47,19 +47,16 @@ If you don't have `make` try `sudo apt install make`.
 
 After calling `make` I get a long list of output finishing with
 
-           Configuring BNFC-2.8.3...
-           cabal: Encountered missing dependencies:
-           doctest >=0.8, hspec -any, temporary -any
-
-           make: *** [internal-tests] Error 1
+        Configuring BNFC-2.8.4...
+        ...
         
-As far as I understand the missing dependencies and the error can be ignored as long as the executable `bnfc` was generated.
+Use your file browser to find where the exectuable `bnfc` is. I found it as 
 
-Use your file browser to find where the exectuable `bnfc` is. I found it as `bnfc/source/dist/build/bnfc` (the first occurrence of `bnfc` refers to the directory cloned from github, the second occurrence refers to the executable).
+        bnfc/source/dist-ghc-8.4/build/bnfc/bnfc
 
-Now we need to make sure that the operating system finds bnfc when typing `bnfc` in the terminal. For example, if you enter `bnfc --version` you may get a `command not found` message. We need to make sure that `bnfc` will be "in the path". I collected some information on [setting the PATH variable](https://github.com/alexhkurz/compiler-construction/blob/master/PATH.md). 
+Now we need to make sure that the operating system finds bnfc when typing `bnfc` in the terminal. For example, if you enter `bnfc --version` you may get a `command not found` message. We need to make sure that `bnfc` will be "in the path". I collected some information on [setting the PATH variable](https://github.com/alexhkurz/compiler-construction-2020/blob/master/PATH.md). 
  
-Now, on entering `bnfc --version` you should see `2.8.3`. (Or some larger number if you are doing this in the future.)
+Now, on entering `bnfc --version` you should see `2.8.4`. (Or some larger number if you are doing this in the future.)
 
 We can now continue with creating a parser for our calculator. This needs the Haskell lexer [Alex](https://www.haskell.org/alex/) and parser [Happy](https://www.haskell.org/happy/). Alex and Happy are part of the Haskell Platform, so you should already have them installed.
 
