@@ -6,8 +6,9 @@
 - [Lecture 2.2](https://hackmd.io/@alexhkurz/B11YSGCz8): Non-deterministic Finite Automata (NFA).  
 - Lecture 3.1: For a review of NFA, we did [Exercise 2.3.2 on page 66](https://mcdtu.files.wordpress.com/2017/03/introduction-to-automata-theory.pdf) together. Then we studied different ways of [Composing Automata](https://hackmd.io/@alexhkurz/ryV_FU7XI).    
 
-...
-the lectures below are still in draft form
+
 - [Lecture 3.2](https://hackmd.io/@alexhkurz/HkoNj8mmU).  
-- Lecture 4.1: **How to build a compiler/interpreter in 50min**. Chapter 2.1 - 2.6 of [IPL](http://www.cse.chalmers.se/edu/year/2012/course/DAT150/lectures/plt-book.pdf). For installation  introductions see the [BNFC homepage](http://bnfc.digitalgrammars.com) or our own [BNFC installation instructions](https://github.com/alexhkurz/compiler-construction-2020/blob/master/BNFC-installation.md). 
-**Homework:** First install Haskell (not necessary if you use the windows binaries), then install BNFC. *Deadline: Monday, March 2, before class*.   
+
+the lectures below are still in draft form
+- Lecture 4.1: **How to build an interpreter in 50min**. Chapter 2.1 - 2.6 of [IPL](http://www.cse.chalmers.se/edu/year/2012/course/DAT150/lectures/plt-book.pdf). For installation  introductions see the [BNFC homepage](http://bnfc.digitalgrammars.com) or our own [BNFC installation instructions](https://github.com/alexhkurz/compiler-construction-2020/blob/master/BNFC-installation.md). 
+**Homework:** Install Haskell and BNFC and get the calculator running. *Deadline: Monday, March 2, before class*.    
