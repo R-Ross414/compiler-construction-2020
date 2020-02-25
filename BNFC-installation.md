@@ -82,9 +82,7 @@ which should produce the answer `7`.
     
 Great, you have successfully compiled and run your first program.
 
-## Installing the Java lexer and parser
-
-Follow [my instructions here](https://github.com/alexhkurz/compiler-construction/blob/master/BNFC-installation-java.md).
+> I am not encouraging to write compilers in Java at this stage. But it is supported by BNFC, so feel free to try. There are still some instructions I have from last year for installing the Java lexer parser, see the [my instructions here](https://github.com/alexhkurz/compiler-construction-2020/blob/master/BNFC-installation-java-2019.md).
 
 ---
 
