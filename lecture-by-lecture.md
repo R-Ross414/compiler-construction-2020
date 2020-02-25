@@ -11,4 +11,6 @@
 
 the lectures below are still in draft form
 - Lecture 4.1: *How to build an interpreter in one lecture*. Chapter 2.1 - 2.6 of [IPL](http://www.cse.chalmers.se/edu/year/2012/course/DAT150/lectures/plt-book.pdf). For installation  introductions see the [BNFC homepage](http://bnfc.digitalgrammars.com) or our own [BNFC installation instructions](https://github.com/alexhkurz/compiler-construction-2020/blob/master/BNFC-installation.md). 
-**Homework:** Install Haskell and BNFC and get the calculator running. *Deadline: Monday, March 2, before class*.    
+**Homework:** Install Haskell and BNFC and get the calculator running. *Deadline: Monday, March 2, before class*. Convince yourself that the grammar in `Calc.cf` has only one parse tree for `1+2*3`.
+
+
