@@ -9,10 +9,10 @@ The IPL book is written with Haskell and Java in mind. BNFC also supports other 
     
 should all work. But to make the Java lexer and parser some more installation work is needed.
 
-I will assume that you successfully followed [my BNFC installation instructions](https://github.com/alexhkurz/compiler-construction/blob/master/BNFC-installation.md). Here we will look at how to get the 
+I will assume that you successfully followed [my BNFC installation instructions](https://github.com/alexhkurz/compiler-construction-2020/blob/master/BNFC-installation.md). Here we will look at how to get the 
 Java part of the [BNFC tutorial](http://bnfc.digitalgrammars.com/tutorial/bnfc-tutorial.html) to work.
 
-First, we need to install the latest version of the Java lexer JLex and parser generator Cup. It is necessary to change the CLASSPATH variable so that the java compiler knows the location of the JLex and Cup. In my case I created directories `/usr/local/java`and `/usr/local/java/Cup`and `/usr/local/java/JLex` and then [added to my `.bash_profile`](https://github.com/alexhkurz/compiler-construction/blob/master/PATH.md)
+First, we need to install the latest version of the Java lexer JLex and parser generator Cup. It is necessary to change the CLASSPATH variable so that the java compiler knows the location of the JLex and Cup. In my case I created directories `/usr/local/java`and `/usr/local/java/Cup`and `/usr/local/java/JLex` and then [added to my `.bash_profile`](https://github.com/alexhkurz/compiler-construction-2020/blob/master/PATH.md)
 
      export CLASSPATH=$CLASSPATH:.:/usr/local/java/:/usr/local/java/Cup:/usr/local/java/JLex
      
