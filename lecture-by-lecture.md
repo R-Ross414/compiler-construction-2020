@@ -23,9 +23,9 @@
   - Read the [BNFC tutorial](http://bnfc.digitalgrammars.com/tutorial/bnfc-tutorial.html) or the [short version](bnfc-tutorial-short.md) which contains what we covered in the lecture.
   - Convince yourself that the grammar in `Calc.cf` has only one parse tree for `1+2*3`.
 
-... the lectures below are still in draft form ... 
+... the lectures below are still in **draft** form ... 
 
-- Lecture 4.2: The aim of this lecture is to understand more about parsing. Here are the grammars of languages you know: [C](https://cs.wmich.edu/~gupta/teaching/cs4850/sumII06/The%20syntax%20of%20C%20in%20Backus-Naur%20form.htm) and [Java](https://docs.oracle.com/javase/specs/jls/se11/html/jls-19.html). In the lecture we explain how the grammar of C-- of the [BNFC tutorial](http://bnfc.digitalgrammars.com/tutorial/bnfc-tutorial.html) works, see [here](bnfc-tutorial-C--.md) for a short version. We also look at Exercise 2 in  [BNFC self check](https://github.com/alexhkurz/compiler-construction-2019/blob/master/BNFC-example.md). Trying to find the bug in the program of Exercise 2 is **Homework**.
+- Lecture 4.2: The aim of this lecture is to understand more about parsing. Here are the grammars of languages you know: [C](https://cs.wmich.edu/~gupta/teaching/cs4850/sumII06/The%20syntax%20of%20C%20in%20Backus-Naur%20form.htm) and [Java](https://docs.oracle.com/javase/specs/jls/se11/html/jls-19.html). In the lecture we explain how the grammar of C-- of the [BNFC tutorial](http://bnfc.digitalgrammars.com/tutorial/bnfc-tutorial.html) works, see [here](bnfc-tutorial-C--.md) for a short version. We also look at Exercise 2 in  [BNFC self check](https://github.com/alexhkurz/compiler-construction-2020/blob/master/BNFC-example.md). Trying to find the bug in the program of Exercise 2 is **Homework**.
 
 ...
 
