@@ -29,7 +29,7 @@
 
 ... the lectures below are still in **draft** form ... 
 
-- Lecture 5.1:  We explain how the grammar of C-- of the [BNFC tutorial](http://bnfc.digitalgrammars.com/tutorial/bnfc-tutorial.html) works, see [here](bnfc-tutorial-C--.md) for a short version. 
+- Lecture 5.1:  We explain how the grammar of C-- of the [BNFC tutorial](http://bnfc.digitalgrammars.com/tutorial/bnfc-tutorial.html) works, see [here](bnfc-tutorial-C--.md) for a short version of the tutorial. 
 
 ...
 
