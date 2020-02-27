@@ -18,14 +18,18 @@
 #### Part 2: Parsing
 
 - Lecture 4.1: *How to build an interpreter in one lecture*. Chapter 2.1 - 2.6 of [IPL](http://www.cse.chalmers.se/edu/year/2012/course/DAT150/lectures/plt-book.pdf). For installation  introductions see the [BNFC homepage](http://bnfc.digitalgrammars.com) or our own [BNFC installation instructions](https://github.com/alexhkurz/compiler-construction-2020/blob/master/BNFC-installation.md). 
-**Homework:** 
+**Homework** (mandatory): 
   - Install Haskell and BNFC and get the calculator running. *Deadline: Monday, March 2, before class*. 
   - Read the [BNFC tutorial](http://bnfc.digitalgrammars.com/tutorial/bnfc-tutorial.html) or the [short version](bnfc-tutorial-short.md) which contains what we covered in the lecture.
   - Convince yourself that the grammar in `Calc.cf` has only one parse tree for `1+2*3`.
 
+- Lecture 4.2: The aim of this lecture is to parse a program of a language we do not know using nothing but the its grammar, see Exercise 2 in  [BNFC self check](https://github.com/alexhkurz/compiler-construction-2020/blob/master/BNFC-example.md). 
+**Homework** (mandatory): Find the bug in the program of [Exercise 2](https://github.com/alexhkurz/compiler-construction-2020/blob/master/BNFC-example.md). 
+**Homework** (optional): Study the grammar of a language you know, for example [C](https://cs.wmich.edu/~gupta/teaching/cs4850/sumII06/The%20syntax%20of%20C%20in%20Backus-Naur%20form.htm) or [Java](https://docs.oracle.com/javase/specs/jls/se11/html/jls-19.html).
+
 ... the lectures below are still in **draft** form ... 
 
-- Lecture 4.2: The aim of this lecture is to understand more about parsing. Here are the grammars of languages you know: [C](https://cs.wmich.edu/~gupta/teaching/cs4850/sumII06/The%20syntax%20of%20C%20in%20Backus-Naur%20form.htm) and [Java](https://docs.oracle.com/javase/specs/jls/se11/html/jls-19.html). In the lecture we explain how the grammar of C-- of the [BNFC tutorial](http://bnfc.digitalgrammars.com/tutorial/bnfc-tutorial.html) works, see [here](bnfc-tutorial-C--.md) for a short version. We also look at Exercise 2 in  [BNFC self check](https://github.com/alexhkurz/compiler-construction-2020/blob/master/BNFC-example.md). Trying to find the bug in the program of Exercise 2 is **Homework**.
+- Lecture 5.1:  We explain how the grammar of C-- of the [BNFC tutorial](http://bnfc.digitalgrammars.com/tutorial/bnfc-tutorial.html) works, see [here](bnfc-tutorial-C--.md) for a short version. 
 
 ...
 
