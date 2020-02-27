@@ -1,6 +1,5 @@
 # Lecture by Lecture
 
-
 - [Lecture 1.1](lecture-1.1.md): Overview, Assessment, Syllabus.
 
 #### Part 1: Finite Automata

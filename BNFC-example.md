@@ -65,7 +65,7 @@ active [2] proctype P1()
 
 **Exercise 2b:** Continue the parse tree from the previous ecercise until it is complete or until it becomes easy and boring. 
 
-**Exercise 2c:** Find the bug in the program, assuming that `pid` is a legal type. [Hint: You save space and time while doing the parsing with pen and paper, if you do not write out the full parse tree, but only maintain the stack (in addition to pen an paper it is also useful to have an erasor to pop elements from the stack.]
+**Exercise 2c:** Find the bug in the program, assuming that `pid` is a legal type. [Hint: You save space and time while doing the parsing with pen and paper, if you do not write out the full parse tree, but only maintain the stack (in addition to pen an paper it is also useful to have an erasor to pop elements from the stack).]
 
 
 ## Theory: Answer the following questions (Exercise 3)
