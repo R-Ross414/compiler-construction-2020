@@ -3,7 +3,7 @@
 
 - [Lecture 1.1](lecture-1.1.md): Overview, Assessment, Syllabus.
 
-##### Part 1: Finite Automata
+#### Part 1: Finite Automata
 
 - [Lecture 1.2](lecture-1.2.md): Deterministic Finite Automata (DFA).
 - [Lecture 2.1](lecture-2.1.md): 
@@ -15,7 +15,7 @@
   - Then we studied different ways of [Composing Automata](https://hackmd.io/@alexhkurz/ryV_FU7XI).
 - [Lecture 3.2](https://hackmd.io/@alexhkurz/HkoNj8mmU): Eliminating epsilon transitions, translating regular expressions into DFAs.
 
-##### Part 2: Parsing
+#### Part 2: Parsing
 
 - Lecture 4.1: *How to build an interpreter in one lecture*. Chapter 2.1 - 2.6 of [IPL](http://www.cse.chalmers.se/edu/year/2012/course/DAT150/lectures/plt-book.pdf). For installation  introductions see the [BNFC homepage](http://bnfc.digitalgrammars.com) or our own [BNFC installation instructions](https://github.com/alexhkurz/compiler-construction-2020/blob/master/BNFC-installation.md). 
 **Homework:** 
@@ -25,7 +25,7 @@
 
 ... the lectures below are still in draft form ... 
 
-- Lecture 4.2: The aim of this lecture is to understand more about parsing. I link the grammars of [C](https://cs.wmich.edu/~gupta/teaching/cs4850/sumII06/The%20syntax%20of%20C%20in%20Backus-Naur%20form.htm) and [Java](https://docs.oracle.com/javase/specs/jls/se11/html/jls-19.html). In the lecture we explain how the grammar of C-- of the [BNFC tutorial](http://bnfc.digitalgrammars.com/tutorial/bnfc-tutorial.html) works. We also look at Exercise 2 in  [BNFC self check](https://github.com/alexhkurz/compiler-construction-2019/blob/master/BNFC-example.md). Trying to find the bug in the program of Exercise 2 is **Homework**.
+- Lecture 4.2: The aim of this lecture is to understand more about parsing. Here are the grammars of languages you know: [C](https://cs.wmich.edu/~gupta/teaching/cs4850/sumII06/The%20syntax%20of%20C%20in%20Backus-Naur%20form.htm) and [Java](https://docs.oracle.com/javase/specs/jls/se11/html/jls-19.html). In the lecture we explain how the grammar of C-- of the [BNFC tutorial](http://bnfc.digitalgrammars.com/tutorial/bnfc-tutorial.html) works, see [here](bnfc-tutorial-C--.md) for a short version. We also look at Exercise 2 in  [BNFC self check](https://github.com/alexhkurz/compiler-construction-2019/blob/master/BNFC-example.md). Trying to find the bug in the program of Exercise 2 is **Homework**.
 
 ...
 
