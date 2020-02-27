@@ -1,6 +1,6 @@
 # BNFC Tutorial Short Version
 
-See [here]() for the official tutorial with more information.
+See [here](http://bnfc.digitalgrammars.com/tutorial/bnfc-tutorial.html) for the official tutorial with more information.
     
 ## Calling BNFC
     
