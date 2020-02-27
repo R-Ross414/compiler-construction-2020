@@ -89,6 +89,8 @@ A BNFC source file is a sequence of <strong>rules</strong>,where most rules have
 
 ## Example of a tree
 
+<p><img style="float: right;" src="Sources/tuttree.png" alt="Example tree showing precedence levels"></p>
+
 <p>In the examples above, the string</p>
 
     23 + 4 * 70
@@ -98,8 +100,6 @@ A BNFC source file is a sequence of <strong>rules</strong>,where most rules have
     EAdd (EInt 23) (EMul (EInt 4) (EInt 70))
 
 <p>This is just a handy (machine-readable!) notation for the "real" tree</p>
-
-<p><img style="float: right;" src="Sources/tuttree.png" alt="Example tree showing precedence levels"></p>
 
 <p>(You may also notice that it is <em>exactly</em> the notation Haskell programmers use for specifying trees.)</p>
 
