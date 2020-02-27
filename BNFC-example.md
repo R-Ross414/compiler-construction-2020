@@ -76,6 +76,6 @@ If you are unsure about the answers consult Chapter 2 in [the book](http://www.c
 
 - Explain the importance of **precedence levels**. Why does the grammar in `Calc.cf` parse `1+2*3` as `1+(2*3)` and not as `(1+2)*3`?
 
-- Explain the concept of **algebraic data types**. How are algebraic data types programmed in Haskell and Java?
+- Explain the concept of **algebraic data types**. How are algebraic data types programmed in Haskell?
 
 - Explain the BNFC notation for **grammars**. Can you write out in detail how to derive the program Fibonacci from the grammar of C-- ?
