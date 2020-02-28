@@ -2,7 +2,7 @@
 
 - [Lecture 1.1](lecture-1.1.md): Overview, Assessment, Syllabus.
 
-#### Part 1: Finite Automata
+### Part 1: Finite Automata
 
 - [Lecture 1.2](lecture-1.2.md): Deterministic Finite Automata (DFA).
 - [Lecture 2.1](lecture-2.1.md): 
@@ -14,11 +14,11 @@
   - Then we studied different ways of [Composing Automata](https://hackmd.io/@alexhkurz/ryV_FU7XI).
 - [Lecture 3.2](https://hackmd.io/@alexhkurz/HkoNj8mmU): Eliminating epsilon transitions, translating regular expressions into DFAs.
 
-#### Part 2: Parsing
+### Part 2: Parsing
 
 - Lecture 4.1: *How to build an interpreter in one lecture*. Chapter 2.1 - 2.6 of [IPL](http://www.cse.chalmers.se/edu/year/2012/course/DAT150/lectures/plt-book.pdf). For installation  introductions see the [BNFC homepage](http://bnfc.digitalgrammars.com) or our own [BNFC installation instructions](https://github.com/alexhkurz/compiler-construction-2020/blob/master/BNFC-installation.md). 
 **Homework** (mandatory): 
-  - Install Haskell and BNFC and get the calculator running. *Deadline: Monday, March 2, before class*. 
+  - Install Haskell and BNFC following the [BNFC installation instructions](https://github.com/alexhkurz/compiler-construction-2020/blob/master/BNFC-installation.md) and get the calculator running. *Deadline: Monday, March 2* (we need this Tuesday in class). 
   - Read the [BNFC tutorial](http://bnfc.digitalgrammars.com/tutorial/bnfc-tutorial.html) or the [short version](bnfc-tutorial-short.md) which contains what we covered in the lecture.
   - Convince yourself that the grammar in `Calc.cf` has only one parse tree for `1+2*3`.
 
