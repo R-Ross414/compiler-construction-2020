@@ -25,23 +25,28 @@ See [here](http://bnfc.digitalgrammars.com/tutorial/bnfc-tutorial.html) for the 
         hi = lo + hi ;
         lo = hi - lo ;
       }
-    return 0 ;
+      return 0 ;
     }
 
 ## List categories
 
-<p><strong>Lists</strong> are used everywhere in grammars. BNFC the category symbol <code>[C]</code> for a list of <code>C</code>s.</p>
-      <p>Thus a program is a list of functions:</p>
+Lists are used everywhere in grammars. In BNFC one can write <code>[C]</code> for a list of <code>C</code>s.</p>
+
+**Activity:** The program `fibonacci` above consists of two functions. How should we formalise this observation as a rule of the grammar of `C--`?
+
+*Answer:* To say that a program is a list of functions we write:
 
     Prog. Program ::= [Function] ;
 
-<p>A function has a list of declarations and a list of statements:</p>
+**Activity:** How can we formalise the syntax of a function definition as a list of declarations and a list of statements?
+
+*Answer:*
 
     Fun. Function ::= Type Ident "(" [Decl] ")" "{" [Stm] "}" ;
 
 ## Terminators and separators
 
-<p>Lists have <strong>terminators</strong> and <strong>separators</strong>:</p>
+Lists have terminators and separators:
 
     terminator Function "" ;
     terminator Stm "" ;

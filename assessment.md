@@ -6,7 +6,7 @@
 
 - 50% of the course on theoretical aspects such as automata, grammars, type inference, etc: 
   - 4 tests worth 5% each. 
-    - Test 1: Finite Automata. Date tba.
+    - Test 1: Tuesday, March 10, in class. [Training test](Sources/test-1-dfas.pdf).
     - Test 2: Parsing. Date tba.
     - Test 3: Type Theory. Date tba.
     - Test 4: Operational Semantics. Date tba.
