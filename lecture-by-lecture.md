@@ -34,7 +34,7 @@
 
 ---
 
-- **Assignment 2**: [Grammar and Parser for C++](http://www.grammaticalframework.org/ipl-book/assignments/assignment1/assignment1.html). You can start from `bnfc/examples/cpp/cpp.cf`, which parses the first test file. Deadline for the second test file is Wed, March 11, (11:59 pm PST), for the rest of the assignment Wed, March 18, (11:59 pm PST).
+- **Assignment 2**: [Grammar and Parser for C++](http://www.grammaticalframework.org/ipl-book/assignments/assignment1/assignment1.html). You can start from `bnfc/examples/cpp/cpp.cf`, see also [here](https://github.com/alexhkurz/compiler-construction-2020/blob/master/Sources/Cpp/cpp.cf), which parses the first test file. Deadline for the second test file is Wed, March 11, (11:59 pm PST), for the rest of the assignment Wed, March 18, (11:59 pm PST).
 
 ---
 ... the material below is in draft form ...
