@@ -26,7 +26,7 @@
 
 - **Lecture 5.1**:  **How to build a grammar**. We explain how one can come up with the grammar of C-- of the [BNFC tutorial](http://bnfc.digitalgrammars.com/tutorial/bnfc-tutorial.html), see [here](bnfc-tutorial-C--.md) for a short version of the tutorial. *Homework* (mandatory): Play around with changing the grammar of C-- (and possibly the program). Post your findings on the discussion group.
 
-- **[Lecture 5.2](https://hackmd.io/@alexhkurz/rk5PsF2EI)**: **How does shift-reduce parsing work?**  How to produce a `.info`-file? 
+- **[Lecture 5.2](https://hackmd.io/@alexhkurz/rk5PsF2EI)**: **How does shift-reduce parsing work?**  How to use a `.info`-file? 
   - **Homework** (mandatory): Do the exercises from the lecture notes. These exercises are relevant for tests and final.
   - **Homework** (optional): Study ParCalc.info and understand how it describes a determinstic algorithm.
 
