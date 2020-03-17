@@ -36,14 +36,16 @@
 
 - [Lecture 6.2](https://hackmd.io/@alexhkurz/SJx6T5R48): Shift/reduce and reduce/reduce conflicts. **Homework:** Do the exercise from the lecture notes. These exercises are relevant for Assignment 2.
 
-- [Lecture 7.1](https://hackmd.io/@alexhkurz/SkXrrBuSI): How to debug a grammar? In the first lecture, we spent most of the time discussing the [dangling else](https://en.wikipedia.org/wiki/Dangling_else). This is a good article. We wrote out some (improvised) grammar rules such as
+- [Lecture 7.1](https://hackmd.io/@alexhkurz/SkXrrBuSI): How to debug a grammar? In the 8:30 lecture, we spent most of the time discussing the [dangling else](https://en.wikipedia.org/wiki/Dangling_else) (good Wikepedia article). We wrote out some (improvised) grammar rules such as
 
-  Exp ::= ExpIf | ExpIfElse | C | D | ...
-  ExpBool ::= A | B | ...
-  ExpIf ::= "if" ExpBool "then" Exp 
-  ExpIfElse ::= "if" ExpBool "then" Exp "else" Exp 
+      Exp ::= ExpIf | ExpIfElse | C | D | ...
+      ExpBool ::= A | B | ...
+      ExpIf ::= "if" ExpBool "then" Exp 
+      ExpIfElse ::= "if" ExpBool "then" Exp "else" Exp 
 
-and analysed how a shift-reduce parser would parse `if A then if B then C else D`.
+  and analysed how a shift-reduce parser would parse
+  
+      if A then if B then C else D
 
 ---
 
