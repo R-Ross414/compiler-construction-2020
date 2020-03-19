@@ -39,9 +39,9 @@
   - This assignment is a great opportunity to practice proper use of git. Provide a full trail of your work under git. In particular, each time your parser parses successfully a new testfile, it is time to make sure that this grammar is pushed to git. You can then create a new branch to work on the new version of the grammar and merge it back to master when it passes the new test-file. Branches also allow you to work in a group on different versions of the grammar at the same time.
   - Use git to share your current version of the grammar with me if you want to ask me a question.
 
-- [Lecture 6.2](https://hackmd.io/@alexhkurz/SJx6T5R48): Shift/reduce and reduce/reduce conflicts. **Homework:** Do the exercise from the lecture notes. These exercises are relevant for Assignment 2.
+- [Lecture 6.2](https://hackmd.io/@alexhkurz/SJx6T5R48): Shift/reduce and reduce/reduce conflicts. *Homework:* Do the exercise from the lecture notes. These exercises are relevant for Assignment 2.
 
-- [Lecture 7.1](https://hackmd.io/@alexhkurz/SkXrrBuSI): How to debug a grammar? In the 8:30 lecture, we spent most of the time discussing the [dangling else](https://en.wikipedia.org/wiki/Dangling_else) (good Wikepedia article). We wrote out some (improvised) grammar rules such as
+- Lecture 7.1: We spent most of the time discussing the benign shift-reduce conflict known as **[dangling else](https://en.wikipedia.org/wiki/Dangling_else)** (good Wikepedia article). We wrote out some (improvised) grammar rules such as
 
       Exp ::= ExpIf | ExpIfElse | C | D | ...
       ExpBool ::= A | B | ...
@@ -51,6 +51,10 @@
   and analysed how a shift-reduce parser would parse
   
       if A then if B then C else D
+
+  (Note that in the grammar we chose to make if-then-else an expression, not a statement, as, for example, in [F#](https://fsharpforfunandprofit.com/posts/expressions-vs-statements/) or the language  LambdaNat we have seen last semester in Programming Languages.)
+
+[Lecture 7.2](https://hackmd.io/@alexhkurz/SkXrrBuSI): How to debug a grammar? We spent most of the time on Examples 1 and 2.
 
 ---
 
