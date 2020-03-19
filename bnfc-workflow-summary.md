@@ -6,4 +6,4 @@ If `grammar.cf` is a BNFC gramar
     make
     ./TestGrammar file-name
 
-See also the [scripts](https://github.com/alexhkurz/compiler-construction-2020/blob/master/course-materials.md#scripts)
+See also the [scripts](https://github.com/alexhkurz/compiler-construction-2020/blob/master/course-materials.md#scripts).
