@@ -21,7 +21,7 @@ Quick links to BNFC installation instructions and other documentation, to be use
 
 I use the following script to compile and test the grammars for Assignment 2. Run as `test1-install cpp` if `cpp.cf` is the name of the grammar.
 
-- [test1-install]()
+- [test1-install](https://github.com/alexhkurz/compiler-construction-2020/blob/master/Sources/Scripts/test1-install)
 
 Matt Raymond wrote a script `bfrun` also doing some clean-up available at
 
