@@ -10,7 +10,7 @@ For DFA, NFA, etc I will use the classic book [Introduction to Automata Theory, 
 Quick links to BNFC installation instructions and other documentation, to be used in addition to the official [BNFC tutorial](http://bnfc.digitalgrammars.com/tutorial/bnfc-tutorial.html) and the  book [Implementing Programming Languages](http://www.grammaticalframework.org/ipl-book/):
 
 - BNFC tutorial digest:
-  - [Part 1](bnfc-tutorial-short.md), [Part 2](bnfc-tutorial-C--.md)
+  - [Workflow summary](bnfcs-workflow-summary.md), [Part 1](bnfc-tutorial-short.md), [Part 2](bnfc-tutorial-C--.md)
 - BNFC: [basic installation instructions](https://github.com/alexhkurz/compiler-construction-2020/blob/master/BNFC-installation.md)
 - BNFC: [self check](https://github.com/alexhkurz/compiler-construction-2020/blob/master/BNFC-example.md)
 - BNFC/Happy parser:
