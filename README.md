@@ -16,9 +16,10 @@
 
 - [Assignments](assignments.md)  
 
+- [Git best practices](git-best-practices.md)
+
 - [Lecture by Lecture](lecture-by-lecture.md)  
 
-- [Tutoring](tutoring.pdf)  
 
 **Tests:**
 
