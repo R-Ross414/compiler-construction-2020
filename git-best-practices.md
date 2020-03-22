@@ -1,6 +1,6 @@
 # Git best practices
 
-I collect here some lessons learned from using git for assignments. 
+I collect here some lessons learned from using git for [assignments](assignments.md). 
 
 - Create a github repository for this course.
 - Conceptually, the repo is your repo for the duration of the course.

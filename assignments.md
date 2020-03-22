@@ -2,10 +2,14 @@
 
 Programming assignments are part of the [assessment](assessment.md).
 
+Each student should create a github repository for doing the assignments, see also the info on [github-best-pracitces.md].
+
 The programming assignments
-- can be done in groups of up to 3 students.
-- must be submitted via a private GitHub repository shared with me (send me an email when you submit).
+- can be done in groups of up to 3 students;
+- must be submitted via a private GitHub repository shared with me (send me an email when you submit);
 - are  typically due at 11:59 pm on the given date. 
+
+For group assignments, only one of the students of the group needs to submit;
 
 Moreover, 
 - all programs must be tested.
