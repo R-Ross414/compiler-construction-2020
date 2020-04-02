@@ -75,7 +75,7 @@ For us there is another one, namely that type checking can be seen as a poor cou
 
 - **Lecture 8.1**: Working towards Assignment 3, the [Type Checker for CPP](http://www.grammaticalframework.org/ipl-book/assignments/assignment2/assignment2.html). Main source is Chapter 4 of the book. **Homework:** Read Chapter 3.9 to 4.3 of [IPL](http://www.cse.chalmers.se/edu/year/2012/course/DAT150/lectures/plt-book.pdf) and be prepared to ask any questions that you might have on this at the beginning of the next lecture. Read the rest of Chapter 4 to prepare for the next lecture.
 
-- **Lecture 8.2**: Working towards Assignment 3, the [Type Checker for CPP](http://www.grammaticalframework.org/ipl-book/assignments/assignment2/assignment2.html). [Grammar](http://www.grammaticalframework.org/ipl-book/examples/CPP.cf) and [Slides](http://www.grammaticalframework.org/ipl-book/slides/4-slides-ipl-book.pdf), up to page 15.
+- **Lecture 8.2**: Working towards Assignment 3. For general background, we need the [Grammar](http://www.grammaticalframework.org/ipl-book/examples/CPP.cf) and understand how programs are translated into abstract syntax. We went through [Slides](http://www.grammaticalframework.org/ipl-book/slides/4-slides-ipl-book.pdf), up to page 15. **Homework:** Run (a program with) the expression `x+y>y` through your bnfc generated parser and study the abstract syntax tree. Can you write out the steps that the typchecker takes for a similar but different example?
 
 ...
 
