@@ -1,3 +1,11 @@
+# Answer to practice test 1
+
+Do the test first yourself before looking at the answer.
+
+I double checked my answer but there may still be typos ... so please ask if you find anything unclear.
+
+## Question 1
+
 Parse 
 
     int main(){int x=++x-++x*x}
@@ -52,11 +60,11 @@ with the grammar [cpp.cf](https://github.com/alexhkurz/compiler-construction-202
 |`Def` |  |DFun
 |`Program` | | PDefs 
 
-## Concrete Syntax Tree
+## Question 2: Concrete Syntax Tree
 
 The first page of [Trees](syntax-trees.pdf) shows how much of the concrete syntax tree can be built before discovering that a `;` is missing. The second page shows the concrete syntax tree for the corrected program.
 
-## Abstract Syntax Tree
+## Question 3: Abstract Syntax Tree
 
 Linearized (from the bnfc-generated parser):
 
