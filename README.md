@@ -25,6 +25,8 @@
 
 - **Test 1:** Tuesday, March 10, in class. [Training test](Sources/test-1-dfas.pdf).
 
+- **Test 2:** Tuesday, April 7, in class. [Training test](Sources/test-2.md).
+
 **Acknowledgements:**
 
 This course was developed for the students at Chapman University by myself and Samuel Balco. 
