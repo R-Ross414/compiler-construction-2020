@@ -62,7 +62,7 @@ with the grammar [cpp.cf](https://github.com/alexhkurz/compiler-construction-202
 
 ## Question 2: Concrete Syntax Tree
 
-The first page of [Trees](syntax-trees.pdf) shows how much of the concrete syntax tree can be built before discovering that a `;` is missing. The second page shows the concrete syntax tree for the corrected program.
+The first page of [Trees](syntax-trees.pdf) shows how much of the concrete syntax tree can be built before discovering that a `;` is missing. The second page shows the concrete syntax tree for the corrected program. Thanks to Scott, I put a [corrected version](CST.pdf)
 
 ## Question 3: Abstract Syntax Tree
 
