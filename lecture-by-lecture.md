@@ -77,6 +77,17 @@ For us there is another one, namely that type checking can be seen as a poor cou
 
 - **Lecture 8.2**: Working towards Assignment 3. For general background, we need the [Grammar](http://www.grammaticalframework.org/ipl-book/examples/CPP.cf) and understand how programs are translated into abstract syntax. We went through [Slides](http://www.grammaticalframework.org/ipl-book/slides/4-slides-ipl-book.pdf), up to page 15. **Homework:** Run (a program with) the expression `x+y>y` through your bnfc generated parser and study the abstract syntax tree. Can you write out the steps that the typchecker takes for a similar but different example?
 
+- **Lecture 9.1**: Assignment 3. We looked how to do typechecking rules for the statements of the [grammar](http://www.grammaticalframework.org/ipl-book/examples/CPP.cf) and went through the [slides](http://www.grammaticalframework.org/ipl-book/slides/4-slides-ipl-book.pdf), up to page 34. 
+
+- **9.2** was Test 2.
+
+- [Assignment 3](https://github.com/ChapmanCPSC/compiler-assignments/blob/master/README.md). Deadlines April 13, April 20.
+
+- **Lecture 10.1:** We looked through the code of the [typechecker](https://github.com/ChapmanCPSC/compiler-assignments/blob/master/Typechecker/Haskell/src/TypeChecker.hs) with the aim of understanding to match up the typchecking rules in the [slides](http://www.grammaticalframework.org/ipl-book/slides/4-slides-ipl-book.pdf) with the code.
+
+
+
+
 ...
 
 ## Part 4: Interpretation
