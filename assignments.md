@@ -27,9 +27,9 @@ There will be the following assignments. Deadlines, links, instructions will be 
     - This assignment is a great opportunity to practice proper use of git. Provide a full trail of your work under git. In particular, each time your parser parses successfully a new testfile, it is time to make sure that this grammar is pushed to git. You can then create a new branch to work on the new version of the grammar and merge it back to master when it passes the new test-file. Branches also allow you to work in a group on different versions of the grammar at the same time.
     - Use git to share your current version of the grammar with me if you want to ask me a question.
  
-  - Assignment 3: [Type Checker for CPP](https://github.com/ChapmanCPSC/compiler-assignments/blob/master/README.md). Deadlines April 13, April 20.
+  - Assignment 3: [Type Checker for CPP](https://github.com/ChapmanCPSC/compiler-assignments/blob/master/README.md). Deadlines April 13, April 20. This assignment is based on [Assignment 2 IPL](http://www.grammaticalframework.org/ipl-book/assignments/assignment2/assignment2.html).
  
-  - Assignment 4: Interpreter for CPP. Deadline tba.       
+  - Assignment 4: [Interpreter for CPP](https://github.com/ChapmanCPSC/compiler-assignments/blob/master/README.md). Deadlines April 22, April 29. This assignment is based on [Assignment 3 IPL](http://www.grammaticalframework.org/ipl-book/assignments/assignment3/assignment3.html).
   
   - Assignment 5: Code Generator for CPP. Deadline tba
 
