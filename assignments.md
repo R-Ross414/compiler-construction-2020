@@ -20,7 +20,7 @@ There will be the following assignments. Deadlines, links, instructions will be 
 
   - [Assignment 1](https://hackmd.io/@alexhkurz/SyzUgMabU): Searching Strings. Deadline Friday Feb 14, 11:59pm. 
 
-  - **Assignment 2**: [Grammar and Parser for C++](http://www.grammaticalframework.org/ipl-book/assignments/assignment1/assignment1.html). You can start from `bnfc/examples/cpp/cpp.cf`, see also [here](https://github.com/alexhkurz/compiler-construction-2020/blob/master/Sources/Cpp/cpp.cf).  
+  - Assignment 2: [Grammar and Parser for C++](http://www.grammaticalframework.org/ipl-book/assignments/assignment1/assignment1.html). You can start from `bnfc/examples/cpp/cpp.cf`, see also [here](https://github.com/alexhkurz/compiler-construction-2020/blob/master/Sources/Cpp/cpp.cf).  
     - Deadline for the first test file is Wed, March 11, (11:59 pm PST).
     - Deadline for the second part is Wed, March 18, (11:59 pm PST).
     - Deadline for the rest of the assignment Wed, March 25, (11:59 pm PST).
@@ -29,7 +29,7 @@ There will be the following assignments. Deadlines, links, instructions will be 
  
   - Assignment 3: [Type Checker for CPP](https://github.com/ChapmanCPSC/compiler-assignments/blob/master/README.md). Deadlines April 13, April 20. This assignment is based on [Assignment 2 IPL](http://www.grammaticalframework.org/ipl-book/assignments/assignment2/assignment2.html).
  
-  - Assignment 4: [Interpreter for CPP](https://github.com/ChapmanCPSC/compiler-assignments/blob/master/README.md). Deadlines April 22, April 29. This assignment is based on [Assignment 3 IPL](http://www.grammaticalframework.org/ipl-book/assignments/assignment3/assignment3.html).
+  - **Assignment 4**: [Interpreter for CPP](https://github.com/ChapmanCPSC/compiler-assignments/blob/master/README.md). Deadlines April 22, April 29. This assignment is based on [Assignment 3 IPL](http://www.grammaticalframework.org/ipl-book/assignments/assignment3/assignment3.html).
   
   - Assignment 5: Code Generator for CPP. Deadline tba
 
