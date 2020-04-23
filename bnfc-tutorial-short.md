@@ -4,11 +4,7 @@ See [here](http://bnfc.digitalgrammars.com/tutorial/bnfc-tutorial.html) for the 
     
 ## Creating a parser with BNFC
     
-When you have BNFC in place (i.e. on your path), you can all it by
-    
-    bnfc
-
-This gives you a list of available options. The most common choice is:
+When you have BNFC in place (i.e. on your path), you can all it by `bnfc`. This gives you a list of available options. The most common choice is:
     
     bnfc -m --haskell grammar.cf      
 
