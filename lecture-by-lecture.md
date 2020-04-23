@@ -74,7 +74,7 @@ Reasons why type checking is important:
 - Information in the types can be used to produce more efficient code.
 - Types can be used to disambiguate over-loaded operations.
 
-For us there is another one, namely that type checking can be seen as a poor cousin of interpretation (only finitely many values). Everything we learn about typechecking will help us to understand interpretation better.
+For us there is another one, namely that type checking can be seen as a poor cousin of interpretation (only finitely many values and all inputs known at compile time). Everything we learn about typechecking will help us to understand interpretation better.
 
 - **Lecture 8.1**: Working towards Assignment 3, the [Type Checker for CPP](http://www.grammaticalframework.org/ipl-book/assignments/assignment2/assignment2.html). Main source is Chapter 4 of the book. *Homework:* Read Chapter 3.9 to 4.3 of [IPL](http://www.cse.chalmers.se/edu/year/2012/course/DAT150/lectures/plt-book.pdf) and be prepared to ask any questions that you might have on this at the beginning of the next lecture. Read the rest of Chapter 4 to prepare for the next lecture.
 
