@@ -2,7 +2,7 @@
 
 See [here](http://bnfc.digitalgrammars.com/tutorial/bnfc-tutorial.html) for the official tutorial with more information.
     
-## Calling BNFC
+## Creating a parser with BNFC
     
 When you have BNFC in place (i.e. on your path), you can all it by
     
@@ -10,13 +10,15 @@ When you have BNFC in place (i.e. on your path), you can all it by
 
 This gives you a list of available options. The most common choice is:
     
-    bnfc -m -haskell FILE.cf      
+    bnfc -m --haskell grammar.cf      
 
 The <code>-m</code> flag makes BNFC to generate a <code>Makefile</code>. This means that, after running <code>bnfc</code>, you can create an executable parser by
 
     make
 
-Let us now create our first application from a BNFC source file.
+Now you created a parser for the grammar in `grammar.cf`. This parse is called `TestGrammar`. You can call the parser on a programm written in that grammar by
+
+    ./TestGrammar program
 
 ## My first compiler: calculator
 
