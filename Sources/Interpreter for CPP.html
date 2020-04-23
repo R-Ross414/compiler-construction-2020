@@ -1,0 +1,579 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<meta name="generator" content="http://txt2tags.org">
+<title>Interpreter for CPP</title>
+</head><body text="black" bgcolor="white">
+<center>
+<h1>Interpreter for CPP</h1>
+<font size="4"><i>Implementing Programming Languages, Assignment 3</i></font><br>
+<font size="4">Aarne Ranta (aarne (at) chalmers.se)</font>
+</center>
+
+
+<h1>Summary</h1>
+
+<p>
+The objective of this assignment is to write an interpreter for a fragment
+of the C++ programming language. The interpreter should run programs
+and correctly perform all their input and output actions.
+</p>
+<p>
+Before the work can be submitted, the interpreter has to pass some
+tests, which are given on the book web page via links
+later in this document. 
+</p>
+<p>
+The recommended implementation is via a BNF
+grammar processed by the BNF Converter (BNFC) tool. The syntax
+tree created by the parser is first type checked by using the
+type checker created in <a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment2/assignment2.html">Assignment 2</a>. The interpreter
+should then make another pass of the type-checked code.
+</p>
+<p>
+<!-- NEW -->
+</p>
+<p>
+The approximate size of the grammar is 50 rules, and the interpreter
+code should be 100-300 lines, depending on the programming language
+used.
+</p>
+<p>
+All BNFC supported languages can be used, but guidance is guaranteed
+only for Haskell and Java.
+</p>
+<p>
+The semantics is partially characterized by formal rules in
+Chapter 5 of the book.
+</p>
+<p>
+<!-- NEW -->
+</p>
+
+<h1>Method</h1>
+
+<p>
+The recommended procedure is two passes:
+</p>
+
+<ol>
+<li>build a symbol table that for every function gives it source code syntax tree;
+  the built-in functions can be left out and treated separately in the rule for
+  eveluating function calls
+</li><li>interpret the program by eveluating the expression <code>main()</code>
+</li></ol>
+
+<p>
+You can use the files in either of the directories
+</p>
+
+<ul>
+<li><a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment3/haskell/">Haskell package</a>
+</li><li><a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment3/java/">Java package</a>
+</li></ul>
+
+<p>
+Copy your <code>CPP.cf</code> grammar and the
+<code>TypeChecker</code> module from Assignment 2 to the same directory.
+</p>
+<p>
+Edit the file <code>Interpreter.hs</code> or <code>Interpreter.class</code>
+till it implements a complete interpreter. One way of doing
+this is to copy the contents of <code>TypeChecker</code> and modify
+them - the interpreter will be structurally very similar to
+the type checker.
+</p>
+<p>
+<!-- NEW -->
+</p>
+
+<h1>Language specification</h1>
+
+<p>
+The language is the same as in Assignment 2, and you can use the
+grammar file <a href="http://www.grammaticalframework.org/ipl-book/examples/CPP.cf"><code>CPP.cf</code></a>.
+Also its type system is the same.
+</p>
+<p>
+There are six built-in functions:
+</p>
+
+<pre>    void   printInt(int x)        // print an integer and a newline in standard output
+    void   printDouble(double x)  // print a double and a newline in standard output
+    void   printString(string x)  // print a string and a newline in standard output
+    int    readInt()              // read an integer from standard input
+    double readDouble()           // read a double from standard input
+    string readString()           // read a string from standard input
+</pre>
+
+<p>
+The implementation of these functions is a part of the interpreter.
+</p>
+<p>
+<!-- NEW -->
+</p>
+
+<h1>Values</h1>
+
+<p>
+There are five types of values:
+</p>
+
+<ul>
+<li>integer values, e.g. -47
+</li><li>double values, e.g. 3.14159
+</li><li>string values, e.g. "hello world"
+</li><li>boolean values, <code>true</code> and <code>false</code>
+</li><li>a void value, which need never be shown
+</li></ul>
+
+<p>
+Instead of boolean values, you may use integers.
+Then <code>true</code> can be interpreted as 1 and <code>false</code> as 0.
+</p>
+<p>
+Values can be seen as a special case of expressions: as expressions
+that contain no variables and cannot be evaluated further.
+But it is recommended to have a separate datatype of values,
+in order to guarantee that evaluation always results in a value.
+</p>
+<p>
+Thus the evaluation of an expression in an environment should always
+result in a value.
+</p>
+<p>
+<!-- NEW -->
+</p>
+
+<h1>Operational Semantics</h1>
+
+<h2>Programs</h2>
+
+<p>
+A program is a sequence of function definitions. 
+Each function has a parameter list and a body, which
+is a sequence of statements.
+</p>
+<p>
+The evaluation of a function call starts by evaluting the arguments
+and building an environment where the received values are assigned
+to the argument variables (a.k.a. parameters) of the function. 
+</p>
+<p>
+The statements in the body are then executed in
+the order defined by their textual order as altered by <code>while</code>
+loops and <code>if</code> conditions. 
+</p>
+<p>
+The function returns a value, which is obtained from a <code>return</code>
+statement. This statement can be assumed to be the in the last statement of 
+the function body: either alone, or in the branches of an <code>if-else</code>
+statement.
+If the return type is <code>void</code>, no return statement is
+required.
+</p>
+<p>
+<!-- NEW -->
+</p>
+
+<h2>Statements</h2>
+
+<p>
+A declaration, e.g. 
+</p>
+
+<pre>    int i ;
+</pre>
+
+<p>
+adds a variable to the current context. Its value
+is initialized if and only if the declaration includes an
+initializing expression, e.g.
+</p>
+
+<pre>    int i = 9 ;
+</pre>
+
+<p>
+An expression statement, e.g. 
+</p>
+
+<pre>    i++ ;
+</pre>
+
+<p>
+is evaluated, and its value is ignored.
+</p>
+<p>
+A block of statements, e.g.
+</p>
+
+<pre>    {
+      int i = 3 ;
+      i++ ;
+    }
+</pre>
+
+<p>
+is interpreted in an environment where a new context is pushed on 
+the context stack at entrance, and popped at exit. 
+</p>
+<p>
+A <code>while</code> statement, e.g.
+</p>
+
+<pre>    while (1 &lt; 10){
+      i++ ;
+    }
+</pre>
+
+<p>
+is interpreted so that the condition expression is first evaluated.
+If the value is <code>true</code>, the body is interpreted in the resulting
+environment, and the <code>while</code> statement is executed again.
+If the value is <code>false</code>, the statement after the <code>while</code> statement
+is interpreted.
+</p>
+<p>
+An <code>if-else</code> statement, e.g.
+</p>
+
+<pre>    if (1 &lt; 10) i++ ; else j++ ;
+</pre>
+
+<p>
+is interpreted so that the condition expression is first evaluated.
+If the value is <code>true</code>, the statement before <code>else</code> is interpreted.
+If the value is <code>false</code>, the statement after <code>else</code> is interpreted.
+</p>
+<p>
+A <code>return</code> statement is executed by evaluating its expression argument.
+The value is returned to the caller of the function, and no more
+statements in the function body are executed. 
+</p>
+<p>
+<!-- NEW -->
+</p>
+
+<h2>Expressions</h2>
+
+<p>
+The interpretation of an expression, also called evaluation,
+returns a value whose type is determined by the type of
+the expression.
+</p>
+<p>
+A literal, e.g.
+</p>
+
+<pre>    123
+    3.14
+    true
+    "hello world"
+</pre>
+
+<p>
+is not evaluated further but just converted to the corresponding value.
+</p>
+<p>
+A variable, e.g.
+</p>
+
+<pre>    x
+</pre>
+
+<p>
+is evaluated by looking up its value in the innermost context where
+it occurs. If the variable is not in the context, or has no value there,
+the interpreter terminates with an error message
+</p>
+
+<pre>    uninitialized variable x
+</pre>
+
+<p>
+A function call, e.g.
+</p>
+
+<pre>    printInt(8 + 9)
+</pre>
+
+<p>
+is interpreted by first evaluating its arguments from left to right.
+The environment is then looked up to find out how the function is
+interpreted on the resulting values. Alternatively, since there are
+only four function calls, they can be hard-coded in the
+expression evaluation code.
+</p>
+<p>
+A postincrement,
+</p>
+
+<pre>    i++
+</pre>
+
+<p>
+has the same value as its body initially has
+(here <code>i</code>). The value of the variable
+<code>i</code> is then incremented by 1. 
+<code>i--</code> correspondingly  decrements <code>i</code> by 1. 
+If <code>i</code> is of type <code>double</code>, 1.0 is used instead.
+</p>
+<p>
+A preincrement,
+</p>
+
+<pre>    ++i
+</pre>
+
+<p>
+has the same value as <code>i</code> plus 1. This incremented value 
+replaces the old value of <code>i</code>. The decrement and double
+variants are analogous.
+</p>
+<p>
+The arithmetic operations addition, subtraction, multiplication, and division,
+</p>
+
+<pre>    a + b
+    a - b
+    a * b
+    a / b
+</pre>
+
+<p>
+are interpreted by evaluating their operands from left to right.
+The resulting values are then added, subtracted, etc., by using
+appropriate operations of the implementation language. We are not
+picky about the precision chosen, but suggest for simplicity
+that <code>int</code> should be <code>int</code> and <code>double</code> should be <code>double</code>.
+</p>
+<p>
+Addition expressions for string arguments are interpreted by
+concatenation, without any intervening spaces.
+</p>
+<p>
+Comparisons,
+</p>
+
+<pre>    a &lt;  b
+    a &gt;  b
+    a &gt;= b
+    a &lt;= b
+    a == b
+    a != b
+</pre>
+
+<p>
+are treated similarly to the arithmetic operations, using
+comparisons of the implementation language. The returned 
+value must be boolean (or an integer, if you use integers
+to represent booleans).
+</p>
+<p>
+Conjunction,
+</p>
+
+<pre>    a &amp;&amp; b
+</pre>
+
+<p>
+is evaluated <i>lazily</i>: first <code>a</code> is evaluated. If the
+result is <code>true</code>, also <code>b</code> is evaluated, and the
+value of <code>b</code> is returned. However, if
+<code>a</code> evaluates to <code>false</code>, then <code>false</code>
+is returned without evaluating <code>b</code>.
+</p>
+<p>
+Disjunction,
+</p>
+
+<pre>    a || b
+</pre>
+
+<p>
+is also evaluated lazily: first <code>a</code> is evaluated. If the
+result is <code>false</code>, also <code>b</code> is evaluated, and the
+value of <code>b</code> is returned. However, if
+<code>a</code> evaluates to <code>true</code>, then <code>true</code>
+is returned without evaluating <code>b</code>.
+</p>
+<p>
+Assignment,
+</p>
+
+<pre>    x = a
+</pre>
+
+<p>
+is evaluated by first evaluating <code>a</code>. The resulting
+value is returned, but also the context is changed by assigning
+this value to the innermost occurrence of <code>x</code>.
+</p>
+<p>
+<!-- NEW -->
+</p>
+
+<h1>Solution format</h1>
+
+<h2>Input and output</h2>
+
+<p>
+The interpreter must be a program called <code>icpp</code>, which is 
+executed by the command
+</p>
+
+<pre>    icpp &lt;SourceFile&gt;
+</pre>
+
+<p>
+and prints its output to the standard output. The output at success
+must be just the output defined by the interpreter.
+</p>
+<p>
+The output at failure is an interpreter error, or a
+<code>TYPE ERROR</code> as in Assignment 2, or a
+<code>SYNTAX ERROR</code> as in Assignment 1.
+</p>
+<p>
+The input can be read not only from user typing on the
+terminal, but also from standard input redirected from
+a file or by <code>echo</code>. For instance,
+</p>
+
+<pre>    ./icpp fibonacci.cc &lt;test-input
+  
+    echo 20 | ./icpp fibonacci.cc
+</pre>
+
+<p>
+The easiest way to produce the proper format is to use the ready-made files in either of
+</p>
+
+<ul>
+<li><a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment3/haskell/">Haskell package</a>
+</li><li><a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment3/java/">Java package</a>
+</li></ul>
+
+<p>
+<!-- NEW -->
+</p>
+
+<h2>Example of success</h2>
+
+<p>
+Source file
+</p>
+
+<pre>  // file good.cc
+  
+  int main () 
+  {
+    int i = readInt() ; //5
+  
+    printInt(i) ;   //5
+    printInt(i++) ; //5
+    printInt(i) ;   //6
+    printInt(++i) ; //7
+    printInt(i) ;   //7
+  
+  }
+</pre>
+
+<p>
+Running the interpreter
+</p>
+
+<pre>    % echo 3 | ./icpp good.cc
+    3
+    3
+    4
+    5
+    5  
+</pre>
+
+<p>
+<!-- NEW -->
+</p>
+
+<h2>Example of failure</h2>
+
+<p>
+Source file
+</p>
+
+<pre>  // file bad.cc
+  
+  int main () 
+  {
+    int i ;
+  
+    printInt(i) ;
+    printInt(i++) ;
+    printInt(i) ;
+    printInt(++i) ;
+    printInt(i) ;
+  
+  }
+</pre>
+
+<p>
+Running the interpreter
+</p>
+
+<pre>    % icpp bad.cc
+    uninitialized variable x
+</pre>
+
+<p>
+Thus it is assumed that the type checker does not detect
+uninitialized variables.
+</p>
+<p>
+<!-- NEW -->
+</p>
+
+<h2>Compiling the interpreter</h2>
+
+<p>
+The interpreter is submitted as a source file package that can be
+compiled by typing <code>make</code>.
+The file names must match the ready-made files in either the
+<a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment3/haskell/">Haskell package</a> or the <a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment3/java/">Java package</a>.
+The simplest solution is to copy the contents of these files
+and replace the grammar, the type checker, and the interpreter
+by your own files.
+</p>
+<p>
+If you want to write the interpreter in another language, the
+procedure is the same: send a tar package
+and make sure the interpreter can be compiled in a normal Unix enviroment
+by typing <code>make</code>.
+</p>
+<p>
+<!-- NEW -->
+</p>
+
+<h1>Test programs</h1>
+
+<p>
+Run the <a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment3/testsuite/">test suite</a> before submitting the assignment.
+</p>
+
+<h1>Success criteria</h1>
+
+<p>
+Your interpreter must pass the <a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment3/testsuite/">test suite</a>.
+The test suite contains only correct programs; the assumption
+is that the type checker has rejected rejected the incorrect
+programs.
+</p>
+<p>
+The solution must be written in an easily readable and
+maintainable way. 
+</p>
+
+<!-- html code generated by txt2tags 2.6 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags assignment3.txt -->
+
+</body></html>

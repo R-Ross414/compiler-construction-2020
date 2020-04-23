@@ -1,0 +1,513 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<meta name="generator" content="http://txt2tags.org">
+<title>Type Checker for CPP</title>
+</head><body text="black" bgcolor="white">
+<center>
+<h1>Type Checker for CPP</h1>
+<font size="4"><i>Implementing Programming Languages, Assignment 2</i></font><br>
+<font size="4">Aarne Ranta (aarne (at) chalmers.se) 2012</font>
+</center>
+
+
+<h1>Summary</h1>
+
+<p>
+The objective of this assignment is to write a type checker for a fragment
+of the C++ programming language. The type checker should return 
+an "OK" at success, and report a type error at failure.
+</p>
+<p>
+The recommended implementation is via a BNF
+grammar processed by BNFC.
+The grammar is explained in this book, in Section 2.10.
+The fragment of C++ covered is smaller than in Assignment 1.
+and does not really include any
+C++ specific features not available in C, except for the
+treatment of strings. You can take the grammar from <a href="http://www.grammaticalframework.org/ipl-book/examples/CPP.cf">here</a>
+</p>
+<p>
+The type system is partially characterized by formal rules in
+Chapter 4.
+</p>
+
+<h1>Method</h1>
+
+<p>
+First build the grammar or
+download it from the book website.
+In the type checker itself, the recommended procedure is two passes:
+</p>
+
+<ol>
+<li>build a symbol table with all function types
+</li><li>type check and annotate the code by using this symbol table
+</li></ol>
+
+<p>
+Only the five built-in types
+</p>
+
+<pre>    int  double  bool  string  void
+</pre>
+
+<p>
+are taken into account. Every expression has one of these types.
+</p>
+<p>
+Types of functions in the symbol table
+can be represented in any way that stores their
+argument and return types. For instance, the function header
+</p>
+
+<pre>    int f (double x, bool b)
+</pre>
+
+<p>
+can create a symbol table entry
+</p>
+
+<pre>    f |-&gt; ([double, bool], int)
+</pre>
+
+<p>
+mapping the name <code>f</code> to a pair whose first component
+is the list of argument types and the second component is the
+return type.
+</p>
+
+<h1>Language and type system specification</h1>
+
+<h2>Programs</h2>
+
+<p>
+A program is a sequence of definitions.
+</p>
+<p>
+A program may also contain comments and preprocessor directives,
+which are just ignored by the parser (see Section 2.10).
+</p>
+
+<h2>Function definitions</h2>
+
+<p>
+A function definition has a type, a name, an argument list, and a body.
+Example:
+</p>
+
+<pre>    int foo(double x, int y)
+    {
+      return y + 9 ;
+    }
+</pre>
+
+<p>
+An argument list is a comma-separated list of argument declarations.
+It is enclosed in parentheses <code>(</code> and <code>)</code>.
+</p>
+<p>
+An argument declaration has a type and an identifier, for instance
+</p>
+
+<pre>    int x
+</pre>
+
+<p>
+Notice that argument declarations with multiple variables
+(<code>int x, y</code>) are not included. A declaration that occurs
+as a statement (as shown below), can also have multiple variables.
+But it must have at least one variable.
+</p>
+<p>
+A function body is a list of statements enclosed
+in curly brackets <code>{</code> and <code>}</code> .
+</p>
+<p>
+<b>Typing</b>.
+The same function name may be used in at most one function definition.
+An argument list may only use each variable once.
+</p>
+<p>
+All <code>return</code> statements in a function body must
+return an expression whose type is the
+return type of the function. 
+You don't need to check that there actually is a <code>return</code> statement 
+(you can do this optionally).
+</p>
+
+<h2>Statements</h2>
+
+<p>
+Any expression followed by a semicolon <code>;</code> can be used as a statement.
+</p>
+<p>
+Any declaration followed by a semicolon <code>;</code> can be used as a statement.
+Declarations have one of the following formats:
+</p>
+
+<ul>
+<li>type and one variable (as in function parameter lists):
+
+<pre>    int i ;
+</pre>
+
+</li><li>type and many variables
+
+<pre>    int i, j ;
+</pre>
+
+</li><li>type and one initialized variable
+
+<pre>    int i = 6 ;
+</pre>
+
+<b>Typing</b>. The initializing expression must have the declared type.
+</li></ul>
+
+<p>
+Statements returning an expression, for example
+</p>
+
+<pre>    return i + 9 ;
+</pre>
+
+<p>
+<b>Typing</b>. The type of the returned expression must be the same as
+the return type of the function in which it occurs.
+</p>
+<p>
+While loops, with an expression in parentheses followed by a statement, for
+example:
+</p>
+
+<pre>    while (i &lt; 10) ++i ;
+</pre>
+
+<p>
+<b>Typing</b>. The expression must have type <b>bool</b>.
+</p>
+<p>
+Conditionals: <code>if</code> with an expression in parentheses followed by
+a statement, <code>else</code>, and another statement. Examples:
+</p>
+
+<pre>    if (x &gt; 0) return x ; else return y ;
+</pre>
+
+<p>
+<b>Typing</b>. The expression must have type <b>bool</b>.
+</p>
+<p>
+Blocks: any list of statements (including empty list) between 
+curly brackets. For instance,
+</p>
+
+<pre>    { 
+      int i = 2 ;
+      {
+      }
+      i++ ;
+    }
+</pre>
+
+<p>
+<b>Typing</b>.
+A variable may only be declared once on the same block level.
+The parameters of a function have the same level as the
+top-level block in the body.
+</p>
+
+<h2>Expressions</h2>
+
+<p>
+The following table gives the expressions and their precedence levels.
+Infix operators are assumed to be left-associative. The arguments in
+a function call can be expressions of any level.
+Otherwise, the subexpressions are assumed to be one precedence level above of 
+the main expression.
+</p>
+<p>
+<b>Note</b>. The table is not guaranteed to be exactly the same as in 
+the C++ standard.
+</p>
+
+<table cellpadding="4" border="1" align="center">
+<tbody><tr>
+<th>level</th>
+<th>expression forms</th>
+<th>explanation</th>
+<th>type</th>
+</tr>
+<tr>
+<td align="center">16</td>
+<td>literal</td>
+<td>literal</td>
+<td>literal type</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td>identifier</td>
+<td>variable</td>
+<td>declared type</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td><code>f(e,...,e)</code></td>
+<td>function call</td>
+<td>return type</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td><code>v++</code>, <code>v--</code></td>
+<td>in/decrement</td>
+<td>(sugar)</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td><code>++v</code>, <code>--v</code></td>
+<td>in/decrement</td>
+<td>(sugar)</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td><code>e*e</code>, <code>e/e</code></td>
+<td>mult, div</td>
+<td>operand type (int or double)</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td><code>e+e</code></td>
+<td>add, sub</td>
+<td>operand type (int, double or string)</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td><code>e-e</code></td>
+<td>add, sub</td>
+<td>operand type (int or double)</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td><code>e&lt;e</code>, <code>e&gt;e</code>, <code>e&gt;=e</code>, <code>e&lt;=e</code></td>
+<td>comparison</td>
+<td>bool</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td><code>e==e</code>, <code>e!=e</code></td>
+<td>(in)equality</td>
+<td>bool</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td><code>e&amp;&amp;e</code></td>
+<td>conjunction</td>
+<td>bool</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td><code>e||e</code></td>
+<td>disjunction</td>
+<td>bool</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td><code>v=e</code></td>
+<td>assignment</td>
+<td>type of LHS</td>
+</tr>
+</tbody></table>
+
+<p>
+Literals include integer literals, floating point literals, and string literals.
+There are also two boolean literals, <code>true</code> and <code>false</code>.
+</p>
+<p>
+<b>Typing</b>.
+Integer, double, string, and boolean literals have types
+<code>int</code>, <code>double</code>, <code>string</code>, and <code>bool</code>, respectively.
+</p>
+<p>
+Variables have the type declared in the nearest enclosing block.
+A variable must be declared before it is used in an expression.
+</p>
+<p>
+The arguments of a function call must have types corresponding to
+the argument types of the called function. The number of arguments
+must be the same as in the function declaration (thus the C++
+default argument rule is not applied). Notice that only
+identifiers are used as functions.
+</p>
+<p>
+Increments and decrements are assumed only to apply to variables.
+</p>
+<p>
+Comparison and (in)equality apply to two operands of the same type,
+which is <code>int</code>, <code>double</code>, <code>string</code>, or <code>bool</code>.
+</p>
+<p>
+Conjunction and disjunction apply to operands of type <code>bool</code> only.
+</p>
+<p>
+Assignments have the same type as the left-hand-side variable.
+Notice that only variables are used as left-hand-sides.
+</p>
+
+<h2>Identifiers</h2>
+
+<p>
+An identifier is a letter followed by a list of letters, digits, and underscores.
+</p>
+
+<h1>Comments</h1>
+
+<p>
+There are three kinds of comments.
+</p>
+
+<ul>
+<li>anything between tokens <code>/*</code> and <code>*/</code>
+</li><li>anything from token <code>//</code> to the end of a line or the file
+</li><li>anything from token <code>#</code> to the end of a line or the file
+  (preprocessor directive)
+</li></ul>
+
+<p>
+Comments cannot be nested.
+</p>
+
+<h2>Input and output</h2>
+
+<p>
+The type checker must be a program called <code>tccpp</code>, which is 
+executed by the command
+</p>
+
+<pre>    tccpp &lt;SourceFile&gt;
+</pre>
+
+<p>
+and prints its output to the standard output. The output at success
+must be just the line <code>OK</code>.
+</p>
+<p>
+The output at failure must be the line <code>TYPE ERROR</code> followed by
+a message indicating the first error. For syntax errors,
+the line must say <code>SYNTAX ERROR</code>.
+</p>
+<p>
+The easiest way to produce this format is to use the ready-made files in either of
+</p>
+
+<ul>
+<li><a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment2/haskell/">Haskell package</a>
+</li><li><a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment2/java/">Java package</a>
+</li></ul>
+
+<p>
+Here is an example of success:
+</p>
+<p>
+Source file
+</p>
+
+<pre>    // file good.cc
+  
+    int factr (int n) 
+    {
+      if (n&lt;2)
+        return 1 ;
+      else 
+        return (n * factr(n-1)) ;
+    }
+  
+    int main () 
+    {
+      int i = factr(7) ;
+      return 0 ;
+    }
+</pre>
+
+<p>
+Running the type checker
+</p>
+
+<pre>    % tccpp good.cc
+    OK
+</pre>
+
+<p>
+Here is an example of failure:
+</p>
+<p>
+Source file
+</p>
+
+<pre>    // file bad.cc
+  
+    int f (double c)  
+    {
+      int n = 1 ;
+      while(c) ++n ;
+    }                   
+</pre>
+
+<p>
+Running the type checker
+</p>
+
+<pre>    % tccpp bad.cc
+    TYPE ERROR
+  
+    condition c in while: expected bool, found double
+</pre>
+
+<h2>Compiling the type checker</h2>
+
+<p>
+The type checker is submitted as a tar package, which contains a <code>Makefile</code>
+such that typing
+</p>
+
+<pre>    make
+</pre>
+
+<p>
+produces the executable program <code>tccpp</code> in a normal Unix environment.
+The standard compilers and 
+parser and lexer tools can be assumed to be a part of
+this environment and should not be included in the tar package.
+</p>
+<p>
+The easiest way to produce this behaviour is to use the ready-made files in either the
+<a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment2/haskell/">Haskell package</a> or the <a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment2/java/">Java package</a>.
+</p>
+
+<h2>A hint on file structure</h2>
+
+<p>
+The simplest way of producing the type checker is to use the
+BNFC-generated test file as a template. Just modify its main
+function so that, instead of the parse tree, it prints the
+type checker output specified above.
+</p>
+<p>
+We recommend the use of either the
+<a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment2/haskell/">Haskell package</a> or the <a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment2/java/">Java package</a>.
+In these packages, you only have to modify two file:
+</p>
+
+<ul>
+<li><code>CPP.cf</code>: the grammar
+</li><li><code>TypeChecker.hs</code> or <code>TypeChecker.java</code>, depending on your implementation language
+</li></ul>
+
+<p>
+Also see Section 4.9--4.11 for what the code can look like.
+</p>
+
+<!-- html code generated by txt2tags 2.6 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags assignment2.txt -->
+
+</body></html>

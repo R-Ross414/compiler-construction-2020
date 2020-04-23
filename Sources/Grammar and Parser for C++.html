@@ -1,0 +1,531 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<meta name="generator" content="http://txt2tags.org">
+<title>Grammar and Parser for C++</title>
+</head><body text="black" bgcolor="white">
+<center>
+<h1>Grammar and Parser for C++</h1>
+<font size="4"><i>Implementing Programming Languages, Assignment 1</i></font><br>
+<font size="4">Aarne Ranta (aarne (at) chalmers.se) 2012</font>
+</center>
+
+
+<h1>Summary</h1>
+
+<p>
+The objective of this assignment is to write a parser for a fragment
+of the C++ programming language. The parser should return 
+an abstract syntax tree at success, and report an error
+with a line number at failure.
+</p>
+<p>
+The recommended implementation of the parser is via a BNF
+grammar processed by the BNF Converter (BNFC) tool. The approximate
+size of the parser source code should be 100 rules.
+With BNFC, no more files than the grammar have to be written and submitted.
+</p>
+
+<h1>Method</h1>
+
+<p>
+Build the grammar gradually, so that you can parse
+the six test files in the given order: as your first 
+goal, parse <a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment1/test/hello.cc">the first test file</a>.
+then the second, and so on.
+</p>
+<p>
+When you have passed one level, just try to parse
+the next example with your current parser and examine
+the line at which it fails. In this way, you will find
+out what new grammar rules you need.
+</p>
+<p>
+After treating the six tests, run the 
+<a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment1/testscript/index.html">test script</a> to
+make your parser perfect.
+</p>
+<p>
+You can use any code generator (Haskell, Java, C,...) from BNFC. It
+doesn't need to be the same language as you plan to use in later
+assignments. However, if you use Haskell, you have the advantage of
+<b>info files</b>, which tell you exactly where the conflicts are.
+Assuming your grammar file is <code>CPP.cf</code> and you have called <code>bnfc</code>
+on it, you can create an info file from the generated Happy file:
+</p>
+
+<pre>    happy -i ParCPP.y
+</pre>
+
+<p>
+The info file is now in <code>ParCPP.info</code>. Moreover, you can produce a
+<b>debugging parser</b> by
+</p>
+
+<pre>    happy -da ParCPP.y
+</pre>
+
+<p>
+Running this parser shows a trace of the LR actions performed during parsing.
+</p>
+
+<h1>Language specification</h1>
+
+<p>
+It is suitable to explain and advisable to implement the parser top-down,
+starting with the largest units and proceeding to smaller ones.
+</p>
+<p>
+The specification differs in some places from the official C++
+specification.
+</p>
+<p>
+To help you get going, we have marked with a bold (<b>1</b>) those
+rules that are needed to parse <a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment1/test/hello.cc">the first test file</a>.
+</p>
+
+<h2>Programs</h2>
+
+<p>
+A program is a sequence of definitions. (<b>1</b>)
+</p>
+<p>
+A program may also contain comments and preprocessor directives,
+which are just ignored by the parser (see below). (<b>1</b>)
+</p>
+
+<h2>Definitions</h2>
+
+<p>
+1. A function definition has a type, a name, an argument list, and a body.
+(<b>1</b>)
+A function can optionally be prefixed by <code>inline</code>. Example:
+</p>
+
+<pre>    inline int foo(double x, int y)
+    {
+      return y + 9 ;
+    }
+</pre>
+
+<p>
+2. Many statements can be used as top-level definitions:
+</p>
+
+<ul>
+<li><code>typedef</code> statements
+</li><li>variable declarations and initializations
+</li><li><code>struct</code> declarations
+</li></ul>
+
+<p>
+3. Finally, definitions for using qualified constants are allowed, e.g.
+</p>
+
+<pre>    using std::vector ;
+</pre>
+
+<h2>Argument lists, declarations, and function bodies</h2>
+
+<p>
+An argument list is a comma-separated list of argument declarations.
+It is enclosed in parentheses <code>(</code> and <code>)</code>. (<b>1</b>)
+</p>
+<p>
+An argument declaration always has a type. This type is optionally
+followed by an identifier or an identifier and an initialization,
+and optionally preceded by the specifier <code>const</code>. The following
+are examples of argument declarations.
+</p>
+
+<pre>    int
+    int x
+    int x = 5
+    const int&amp; x
+</pre>
+
+<p>
+Notice that argument declarations with multiple variables
+(<code>int x, y</code>) are not included. A declaration that occurs
+as a statement (as shown below), can also have multiple variables.
+But it must have at least one variable.
+</p>
+<p>
+A function body is either a list of statements enclosed
+in curly brackets <code>{</code> and <code>}</code> (<b>1</b>), 
+or an empty body consisting
+of a semicolon <code>;</code>.
+</p>
+
+<h2>Statements</h2>
+
+<p>
+Any expression followed by a semicolon <code>;</code> can be used as a statement. (<b>1</b>)
+</p>
+<p>
+Any declaration followed by a semicolon <code>;</code> can be used as a statement.
+Declarations have the same form as argument declarations in functions,
+except that they can have more than one variable.
+</p>
+<p>
+Statements returning an expression (<b>1</b>), for example
+</p>
+
+<pre>    return i + 9 ;
+</pre>
+
+<p>
+While loops, with an expression in parentheses followed by a statement, for
+example:
+</p>
+
+<pre>    while (i &lt; 10) ++i ;
+</pre>
+
+<p>
+Do-while loops, with an expression in parentheses after the loop body, for
+example:
+</p>
+
+<pre>    do ++i ; while (i &lt; 10) ;
+</pre>
+
+<p>
+For loops, with a declaration and two expressions in parentheses followed
+by a statement. For example:
+</p>
+
+<pre>    for (int i = 0 ; i != 10 ; ++i) k = k + i ;
+</pre>
+
+<p>
+We do not require that any of the fields in parentheses may be empty.
+</p>
+<p>
+Conditionals: <code>if</code> with an expression in parentheses followed by
+a statement and optionally by <code>else</code> and a statement. Examples:
+</p>
+
+<pre>    if (x &gt; 0) return x ;
+    
+    if (x &gt; 0) return x ; else return y ;
+</pre>
+
+<p>
+Blocks: any list of statement (including empty list) between 
+curly brackets. For instance,
+</p>
+
+<pre>    { 
+      int i = 2 ;
+      {
+      }
+      i++ ;
+    }
+</pre>
+
+<p>
+Type definitions: a type and a name for it. Example:
+</p>
+
+<pre>    typedef vector&lt;string&gt; Text ;
+</pre>
+
+<p>
+Structure definitions: a name and a list of declarations. Example:
+</p>
+
+<pre>    struct Student_info {
+      string name;
+      double final;
+      vector&lt;double&gt; homework;
+    } ;  
+</pre>
+
+<p>
+Notice that the semicolon is obligatory in the end of a structure definition.
+Otherwise, semicolons are not used after curly brackets - but they are
+obligatory in all statements and definitions not ending with curly
+brackets.
+</p>
+
+<h2>Expressions</h2>
+
+<p>
+The following table gives the expressions and their precedence levels.
+Infix operators are assumed to be left-associative. The arguments in
+a function call can be expressions of any level.
+Otherwise, the
+subexpressions are assumed to be one precedence level above of 
+the main expression.
+</p>
+<p>
+<b>Note</b>. The table is not exactly the same as in the C++ standard.
+</p>
+
+<table cellpadding="4" border="1">
+<tbody><tr>
+<th>level</th>
+<th>expression forms</th>
+<th colspan="2">explanation</th>
+</tr>
+<tr>
+<td align="center">16</td>
+<td>literal</td>
+<td>atomic expressions</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td><code>e[i]</code>, <code>c::i</code></td>
+<td>indexing and qualified constants</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td><code>e(e,...,e)</code></td>
+<td>function call</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td><code>e.e</code>, <code>e-&gt;e</code></td>
+<td>structure projection</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td><code>e++</code>, <code>e--</code>, <code>*e</code></td>
+<td>in/decrement, dereferencing</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td><code>++e</code>, <code>--e</code>, <code>!e</code></td>
+<td>in/decrement, dereferencing, negation</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td><code>e*e</code>, <code>e/e</code>, <code>e%e</code></td>
+<td>multiplication, division, remainder</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td><code>e+e</code>, <code>e-e</code></td>
+<td>addition, subtraction</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td><code>e&lt;&lt;e</code>, <code>e&gt;&gt;e</code></td>
+<td>left and right shift</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td><code>e&lt;e</code>, <code>e&gt;e</code>, <code>e&gt;=e</code>, <code>e&lt;=e</code></td>
+<td>comparison</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td><code>e==e</code>, <code>e!=e</code></td>
+<td>(in)equality</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td><code>e&amp;&amp;e</code></td>
+<td>conjunction</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td><code>e||e</code></td>
+<td>disjunction</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td><code>e=e</code>, <code>e+=e</code>, <code>e-=e</code></td>
+<td>assignment</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td><code>e ? e : e</code></td>
+<td>conditional</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td><code>throw e</code></td>
+<td>exception</td>
+</tr>
+</tbody></table>
+
+<p>
+Expressions needed for test (<b>1</b>): 
+integer and string literal, qualified constant, left shift.
+</p>
+<p>
+Notice that it is syntactically permitted to increment and assign
+a value to any expression, not just variables (and other so-called
+lvalues).
+</p>
+
+<h2>Qualified constants and template instantiations</h2>
+
+<p>
+<b>Qualified constants</b> are constant names separated by <code>::</code>. Names can
+be identifiers but also <b>template instantiations</b>, of the form
+</p>
+
+<pre>    ident &lt; typelist &gt;
+</pre>
+
+<p>
+where a typelist is a comma-separated list of types. Thus possible
+qualified constants include
+</p>
+
+<pre>    std::cout
+    std::vector&lt;int&gt;::const_iterator
+</pre>
+
+<p>
+One simple way to implement qualified constants is as
+nonempty lists separated by <code>::</code>. The elements of the list
+are identifiers and template instantiations. Single identifier
+expressions come out as a special case of these lists.
+</p>
+<p>
+Qualified constants, but without templates, are needed in (<b>1</b>).
+</p>
+
+<h2>Types</h2>
+
+<p>
+Types are either qualified constants (including plain identifiers) or 
+built-in types, of which we include the following:
+</p>
+
+<pre>    bool
+    double
+    int
+    void
+</pre>
+
+<p>
+Only the type <code>int</code> is needed in (<b>1</b>).
+</p>
+
+<h2>Literals</h2>
+
+<p>
+We include double-quoted string literals, integer literals, and floating point
+literals.
+</p>
+<p>
+A string literal may consist of many can be concatenated strings
+and in this way divided over lines:
+</p>
+
+<pre>    "hello " "my little "
+    "world"
+  
+</pre>
+
+<h2>Identifiers</h2>
+
+<p>
+An identifier is a letter followed by a list of letters, digits, 
+and underscores.
+</p>
+
+<h2>Comments</h2>
+
+<p>
+There are three kinds of comments.
+</p>
+
+<ul>
+<li>anything between tokens <code>/*</code> and <code>*/</code>
+</li><li>anything from token <code>//</code> to the end of a line or the file
+</li><li>anything from token <code>#</code> to the end of a line or the file
+  (preprocessor directive)
+<p></p>
+Comments cannot be nested.
+<p></p>
+Comments are needed in (<b>1</b>).
+</li></ul>
+
+<h1>Test programs</h1>
+
+<p>
+These programs are original code from the web page of the book
+<i>Accelerated C++</i> (A. Koenig &amp; B. Moo, Addison-Wesley, 2000).
+</p>
+
+<ul>
+<li><a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment1/test/hello.cc">First</a>: "hello world"
+<p></p>
+</li><li><a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment1/test/greet.cc">Second</a>: ask the user's name and say hello to her
+<p></p>
+</li><li><a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment1/test/med.cc">Third</a>: compute the grade of a student
+<p></p>
+</li><li><a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment1/test/grade.cc">Fourth</a>: a smarter way to compute the grade
+<p></p>
+</li><li><a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment1/test/palin.cc">Fifth</a>: test if a string is a palindrome
+<p></p>
+</li><li><a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment1/test/grammar.cc">Sixth</a>: random-generate English sentences
+</li></ul>
+
+<p>
+Once again: build the grammar gradually so that you can parse
+these files in this order.
+</p>
+
+<h1>Success criteria</h1>
+
+<p>
+Your grammar must pass the <a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment1/testscript/index.html">test suite</a>.
+The test suite contains the example programs, as well
+as a number of programs which your parser must reject.
+</p>
+<p>
+The maximum number of 10 shift/reduce conflicts is permitted.
+The minimum of 2 is almost unavoidable (the "dangling <code>else</code>",
+and template instantiation vs. less-than operator). 
+But reduce/reduce conflicts are forbidden.
+</p>
+
+<h1>C++ features</h1>
+
+<p>
+Assuming you know some C but not C++, here is a summary of the extra features 
+of C++ involved in this assignment.
+</p>
+<p>
+Qualified names: <code>s::n</code>, where <code>s</code> is a name space or a class.
+</p>
+<p>
+<code>using</code> directives: license to use an unqualified name from a name space.
+</p>
+<p>
+IO streams: <code>cout</code> for output, <code>cin</code> for input. Output is
+produced by the left shift operator, input is read by the right shift.
+Example from <a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment1/test/greet.cc">the second program</a>:
+</p>
+
+<pre>    // read the name
+    std::string name;     // define `name'
+    std::cin &gt;&gt; name;     // read into `name'
+  
+    // write a greeting
+    std::cout &lt;&lt; "Hello, " &lt;&lt; name  &lt;&lt; "!" &lt;&lt; std::endl;
+</pre>
+
+<p>
+Templates, e.g. generic types: <code>vector&lt;int&gt;</code> is a vector of integers.
+</p>
+<p>
+Arguments passed by reference (<code>&amp;</code>), 
+with the possibility of forbidding modification (<code>const</code>), e.g.
+(from <a href="http://www.grammaticalframework.org/ipl-book/assignments/assignment1/test/grammar.cc">the sixth program</a>)
+</p>
+
+<pre>    gen_aux(const Grammar&amp; g, const string&amp; word, vector&lt;string&gt;&amp; ret)
+</pre>
+
+<!-- html code generated by txt2tags 2.6 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags assignment1.txt -->
+
+</body></html>
