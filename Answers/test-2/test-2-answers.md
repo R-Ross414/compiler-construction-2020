@@ -28,7 +28,9 @@ for test 2b.
 
 ### Q1
 
-I allow myself to combine multiple shifts into one step so that ever shift is followed by a reduce. I only write out the answer for 2a. The answer for 2a can be obtained by replacing `++` by `--` and `*` by `-`, etc. 
+I allow myself to combine multiple shifts into one step so that ever shift is followed by a reduce. 
+
+I only write out the answer for 2a. The answer for 2b can be obtained by replacing `++` by `--` and `*` by `-`, etc. 
 
 |Stack| Input| Rule |
 |---:|:---| :--: |
