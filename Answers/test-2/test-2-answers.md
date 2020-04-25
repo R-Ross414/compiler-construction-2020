@@ -84,7 +84,7 @@ without first reducing `Exp13` to `Exp12` and `Exp14` to `Exp13` as required by 
 
 ## Q2
 
-The CST is the table above in tree form, see [cst.pdf](cst.jpeg).
+The CST is the table above in tree form, see [cst.jpeg](cst.jpeg).
 
 ## Q3
 
