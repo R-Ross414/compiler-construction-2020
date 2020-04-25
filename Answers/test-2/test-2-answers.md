@@ -10,6 +10,14 @@ Consider the grammar [`cpp.cf`](https://github.com/alexhkurz/compiler-constructi
             int x = 1; 
             return ++x*x+++(++x); }
 
+for test 2a and
+
+        int g(){
+            int x = 10; 
+            return --x-x--+(--x) ; }
+
+for test 2b.
+
 2. (1 point) Write down the concrete syntax tree of the program.
 
 3. (1 point) Write down the abstract syntax tree of the program.
@@ -20,7 +28,7 @@ Consider the grammar [`cpp.cf`](https://github.com/alexhkurz/compiler-constructi
 
 ### Q1
 
-I allow myself to combine multiple shifts into one step so that ever shift is followed by a reduce.
+I allow myself to combine multiple shifts into one step so that ever shift is followed by a reduce. I only write out the answer for 2a. The answer for 2a can be obtained by replacing `++` by `--` and `*` by `-`, etc. 
 
 |Stack| Input| Rule |
 |---:|:---| :--: |
@@ -99,6 +107,8 @@ to obtain the output
     PDefs [DFun Type_int (Id "f") [] [SInit Type_int (Id "x") (EInt 1),SReturn (EPlus (ETimes (EIncr (EId (Id "x"))) (EPIncr (EId (Id "x")))) (EIncr (EId (Id "x"))))]]
 
 Then draw this in 2-dimensional form, see [ast.jpeg](ast.jpeg).
+
+**Exercise:** Make sure that you understand how to obtain the AST from the CST.
 
 ## Q4
 
