@@ -66,6 +66,22 @@ I only write out the answer for 2a. The answer for 2b can be obtained by replaci
 |`Def` | | Dfun
 |`Program` | | Dfun
 
+**Remark:** The crucial moment in the parsing is
+
+    |`Type Id () { Stm return Exp13 * Exp14` | `+(++x);}` | EPIncr
+
+  Should we reduce or should we shift the `+`? Since we are only allowed to reduce at the top of the stack, if we shifted the `+`, we would never again be allowed to reduce the `*` without first reducing the `+` and (try it for yourself) the parsing would lead in a cul de sac.
+
+**Remark:** Integers such as `1` and `10` are directly converted to `Exp15` using the rule `EInt`. 
+ - This can be seen in the linearized AST produced by the bnfc generated parser, see Q3 below. 
+ - To understand the linearized AST better, note that in [AbsCPP.hs]() the clause for `EInt` is 
+
+        data Exp = ... | EInt Integer | ...
+
+    where `Integer` is the Haskell data type.
+ - Also read in the LBNF documentation the section on [predefined basic types](https://bnfc.readthedocs.io/en/latest/lbnf.html?highlight=integer#predefined-basic-types). You will see that recognizing the integers has been moved into the lexer.
+ 
+
 **Remark:** The rules that reduce `(Exp 13)` to `Exp` come from the line
 
     coercions Exp 15 ;
