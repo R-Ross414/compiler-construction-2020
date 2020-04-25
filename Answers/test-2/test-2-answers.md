@@ -62,7 +62,7 @@ I allow myself to combine multiple shifts into one step so that ever shift is fo
 
 in the BNF-grammar [`cpp.cf`](https://github.com/alexhkurz/compiler-construction-2020/blob/master/Sources/Cpp/cpp.cf), which in turn is tranlsated to rule (55) and rules (58), (61), (64), (67), (72), (75), (77), (79), (81-87) in the context-free grammar in [`ParCpp.info`](https://github.com/alexhkurz/compiler-construction-2020/blob/master/Sources/Cpp/ParCpp.info).
 
-**Exercise:** Write out the full reduction sequence that allows us to reduce `(Exp13)` to `Exp`.
+**Exercise:** Using the rules (55), (58), (61), (64), (67), (72), (75), (77), (79), (81-87) of the context-free grammar in [`ParCpp.info`](https://github.com/alexhkurz/compiler-construction-2020/blob/master/Sources/Cpp/ParCpp.info) write out the full reduction sequence that allows us to reduce `(Exp13)` to `Exp`.
 
 **Remark:** I left some other instances of the coercion rule implicit. For example, I read the rule
 
@@ -88,7 +88,7 @@ The CST is the table above in tree form, see [cst.jpeg](cst.jpeg).
 
 ## Q3
 
-Follow the instructions from Lecture 4.1 and the [bnfc tutorial](https://github.com/alexhkurz/compiler-construction-2020/blob/master/bnfc-tutorial-short.md) and run
+Follow the instructions from Lecture 4.1 and the [bnfc tutorial](../../bnfc-tutorial-short.md) and run
 
     bnfc -m --haskell cpp.cf
     make

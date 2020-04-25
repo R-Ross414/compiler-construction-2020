@@ -12,7 +12,7 @@ The <code>-m</code> flag makes BNFC to generate a <code>Makefile</code>. This me
 
     make
 
-Now you created a parser for the grammar in `grammar.cf`. This parse is called `TestGrammar`. You can call the parser on a programm written in that grammar by
+Now you created a parser for the grammar in `grammar.cf`. This parser is called `TestGrammar`. You can call the parser on a programm by
 
     ./TestGrammar program
 
