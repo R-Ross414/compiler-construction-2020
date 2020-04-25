@@ -93,7 +93,7 @@ without first reducing `Exp13` to `Exp12` and `Exp14` to `Exp13` as required by 
 
 ## Q2
 
-The CST is the table above in tree form, see [cst.pdf](cst.pdf).
+The CST is the table above in tree form, see [cst.pdf](cst.jpeg).
 
 ## Q3
 
@@ -107,7 +107,7 @@ to obtain the output
 
     PDefs [DFun Type_int (Id "f") [] [SInit Type_int (Id "x") (EInt 1),SReturn (EPlus (ETimes (EIncr (EId (Id "x"))) (EPIncr (EId (Id "x")))) (EIncr (EId (Id "x"))))]]
 
-Then draw this in 2-dimensional form, see [ast.pdf](ast.pdf).
+Then draw this in 2-dimensional form, see [ast.jpeg](ast.jpeg).
 
 ## Q4
 
