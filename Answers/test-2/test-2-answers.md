@@ -70,7 +70,7 @@ I only write out the answer for 2a. The answer for 2b can be obtained by replaci
 
     |`Type Id () { Stm return Exp13 * Exp14` | `+(++x);}` | EPIncr
 
-  Should we reduce or should we shift the `+`? Since we are only allowed to reduce at the top of the stack, if we shifted the `+`, we would never again be allowed to reduce the `*` without first reducing the `+` and (try it for yourself) the parsing would lead in a cul de sac.
+  Should we reduce or should we shift? Since we are only allowed to reduce at the top of the stack, if we shifted the `+`, we would never again be allowed to reduce the `*` without first reducing the `+` and (try it for yourself) the parsing would lead in a cul de sac.
 
 **Remark:** Integers such as `1` and `10` are directly converted to `Exp15` using the rule `EInt`. 
  - This can be seen in the linearized AST produced by the bnfc generated parser, see Q3 below. 
