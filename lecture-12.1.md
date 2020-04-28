@@ -84,6 +84,7 @@ Now we can run `fibonacci.wasm`:
 To test whether the translation `fibonacci.wat` has the same observable behaviour as `fibonacci.cc`, we can do the following.
 
 - add the header `#include "env.h"` to `fibonnaci.cc`
+- make sure you have `env.h`
 - observe the behaviour of the C++ program:
 
       gcc fibonacci.cc -o fibonacci
@@ -95,6 +96,58 @@ To test whether the translation `fibonacci.wat` has the same observable behaviou
         node run.js fibonacci.wasm
   
   - compare the results
+
+## Stack-based languages
+
+A stack-based programming language operates by pushing and popping values onto a stack as it operates. We therefore have to translate operations, usually written as nested infix syntax, into operations using the stack. This is sometimes referred to as the [reverse polish notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation). As a simple example, let's see how we would compute the expression
+
+    (2 + 4) * 6
+
+In terms of the operations we need to perform, we have to:
+
+-   Push `2` onto the stack
+-   Push `4` onto the stack
+-   Add the two arguments on the stack and push the result back onto the stack
+-   Push `6` onto the stack
+-   Multipy the two arguments on the stack and push the result back onto the stack
+
+We can write these steps in the reverse polish notation as
+
+    2 4 + 6 *
+
+And when translated into webassembly, we get:
+
+    (i32.const 2)
+    (i32.const 4)
+    i32.add
+    (i32.const 6)
+    i32.mul
+
+
+**You could test this quickly in: https://webassembly.github.io/wabt/demo/wat2wasm/ by pasting the following in:**
+
+WAT:
+
+    (module
+        (func (export "test") (result i32)
+            (i32.const 2)
+            (i32.const 4)
+            i32.add
+            (i32.const 6)
+            i32.mul
+            return
+        )
+    )
+
+JS:
+
+    const wasmInstance =
+      new WebAssembly.Instance(wasmModule, {});
+    const { test } = wasmInstance.exports;
+    console.log(test());
+
+
+
 
 ## Translate C++ to Wat
 
