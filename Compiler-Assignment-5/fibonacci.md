@@ -100,11 +100,11 @@ and the compiled WAT program
 ||`(br_if 1)`
 |`printInt(hi) ;`|`(local.get $ihi$0)`
 ||`(call $printInt)`
-|`hi = lo + hi ;`|`i32.add`
-||`(local.get $ilo$0)`
+|`hi = lo + hi ;`|`(local.get $ilo$0)`
 ||`(local.get $ihi$0)`
-|`lo = hi - lo ;`|`(local.set $ihi$0)`
-||`(local.get $ihi$0)`
+||`i32.add`
+||`(local.set $ihi$0)`
+|`lo = hi - lo ;`|`(local.get $ihi$0)`
 ||`(local.get $ilo$0)`
 ||`i32.sub`
 ||`(local.set $ilo$0)`
