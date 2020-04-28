@@ -3,7 +3,7 @@
 The aim of this lecture is to understand how to compile by hand C++ to Webassembly. This is in preperation to Assignment 5 for which we write a compiler from our fragment of C++ to Webassembly.
   
 - We start with an example.
-- We give a short introduction to Webassembly. 
+- We give a short introduction to Webassembly.
 - We compile and run C++ programs in Webassembly using a tool chain.
 - We learn how to compile by hand simple C++ programs to Webassembly.
 
@@ -24,11 +24,11 @@ To quote from [webassembly.org](https://webassembly.org/):
     compilation of high-level languages like C/C++/Rust, enabling deployment 
     on the web for client and server applications.
 
-Technically, Webassembly comes in two formats. 
+Technically, Webassembly comes in two formats.
 
 - A [binary format](https://webassembly.org/docs/binary-encoding/) (in `wasm`-files).
 
- - A [text format](https://webassembly.org/docs/text-format/) of more human readable S-expressions (in `wat`-files).
+- A [text format](https://webassembly.org/docs/text-format/) of more human readable S-expressions (in `wat`-files).
 
 In this lecture we will learn how to write Webassembly in the `wat`-format and then translate it to `wasm` and execute it.
 
@@ -54,14 +54,14 @@ To follow this lecture:
 
 ### Compile C++ to Wat
 
-In this lecture we will learn how to translate by hand simple C++ programs to WebAssembly, or to Wat, more precisely. 
+In this lecture we will learn how to translate by hand simple C++ programs to WebAssembly, or to Wat, more precisely.
 
-- Our running example is [`fibonacci.cc`](Compiler-Assignment-5/fibonacci.cc) from `/test/good`. 
+- Our running example is [`fibonacci.cc`](Compiler-Assignment-5/fibonacci.cc) from `/test/good`.
 - Its translation is [`fibonacci.wat`](Compiler-Assignment-5/fibonacci.wat).
 
 In order to run Wat programs we need to compile Wat to Wasm:
 
-### Compile WAT to WASM
+### Compile Wat to Wasm
 
 Run
 
@@ -69,7 +69,7 @@ Run
 
 This should create a file `fibonacci.wasm`.
 
-### Run WASM files
+### Run Wasm files
 
 We first install the [scanf](https://www.npmjs.com/package/scanf) library for input and output.
 
@@ -83,24 +83,29 @@ Now we can run `fibonacci.wasm`:
 
 To test whether the translation `fibonacci.wat` has the same observable behaviour as `fibonacci.cc`, we can do the following.
 
-  - add the header `#include "env.h"` to `fibonnaci.cc`
-  - observe the behaviour of the C++ program:
-     
-         gcc fibonacci.cc -o fibonacci
-         ./fibonnacci
+- add the header `#include "env.h"` to `fibonnaci.cc`
+- observe the behaviour of the C++ program:
 
-  - observe the behaviour of the Wasm program:
+      gcc fibonacci.cc -o fibonacci
+      ./fibonnacci
+
+- observe the behaviour of the Wasm program:
 
         node wat2wasn.js fibonacci.wat
         node run.js fibonacci.wasm
   
   - compare the results
 
-## Translate C++ to WAT 
+## Translate C++ to Wat
 
-What is the best way to learn Webassembly? 
+What is the best way to learn Webassembly?
 
-One important resource is the [language definition](https://webassembly.github.io/spec/core/text/index.html) at webassembly.org. But while this is the most important reference, it is not a good starting point for learning the language.
+One important resource is the [language definition](https://webassembly.github.io/spec/core/text/index.html) at webassembly.org. In particular, you should at least glance at
+
+- the [typing rules](https://webassembly.github.io/spec/core/valid/index.html) and
+- the [operational semantics](https://webassembly.github.io/spec/core/exec/index.html).
+
+But while these are the most important reference, it is not a good starting point for learning the language.
 
 Instead we take a language we know, C++, and see how to translate it to Wasm (or, rather, Wat).
 
@@ -120,7 +125,7 @@ We compare line by line the C++ program
       return 0 ;
     
     }
-    
+
 and the compiled Webassembly program
 
     (module
@@ -184,7 +189,7 @@ Test your `ass_in_arith-short.wat` as described [above](lecture-12.1.md#test-web
 
 ## References
 
-A good reference for the topic of this lecture is the article 
+A good reference for the topic of this lecture is the article
 
 - [Writing WebAssembly By Hand](https://blog.scottlogic.com/2018/04/26/webassembly-by-hand.html).
 
@@ -196,9 +201,10 @@ and how to write a compiler for Webassembly
 
 - [Build your own WebAssembly Compiler](https://blog.scottlogic.com/2019/05/17/webassembly-compiler.html).
 
-#### General references
+### General references
+
+- [Webassembly.org](https://webassembly.org)
 
 - [Webassembly Specification](https://webassembly.github.io/spec/core/)
 
 - [WebAssembly at MDN](https://developer.mozilla.org/en-US/docs/WebAssembly)
-
