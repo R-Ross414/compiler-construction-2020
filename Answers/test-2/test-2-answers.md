@@ -66,6 +66,11 @@ I only write out the answer for 2a. The answer for 2b can be obtained by replaci
 |`Def` | | Dfun
 |`Program` | | Dfun
 
+
+**Remark:** If you get stuck in your parse, do first Q3, with the possible help of the bnfc generated parser and then work yourelf backwards. Btw, even if you do not get stuck you can use the answer to Q3 to find possible bugs in Q1.
+
+**Remark:** Tokens such as `--` are shifted in one go, not `-` first and then `-` again. You also wouldn't shift `return` by first shifting the `r` and then the `e`, etc. The reason behind this is that the input to the parser has already been tokenized.
+
 **Remark:** The crucial moment in the parsing is
 
     |`Type Id () { Stm return Exp13 * Exp14` | `+(++x);}` | EPIncr
