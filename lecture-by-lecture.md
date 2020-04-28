@@ -103,7 +103,7 @@ For us there is another one, namely that type checking can be seen as a poor cou
 
 ## Part 5: Code Generation
 
-- **[Assignment 4](assignments.md)**: Deadlines May 1 and May 10.
+- **[Assignment 5](assignments.md)**: Deadlines May 1 and May 10.
 
 - **[Lecture 12.1](lecture-12.1.md)**: Webassembly.
 
