@@ -95,7 +95,7 @@ To test whether the translation `fibonacci.wat` has the same observable behaviou
         node wat2wasn.js fibonacci.wat
         node run.js fibonacci.wasm
   
-  - compare the results
+- compare the results
 
 ## Stack-based languages
 
@@ -226,7 +226,7 @@ and the compiled Webassembly program
      (export "main" (func $main))
     )
 
-**Activity:** Make a table matching the C++ program and the WAT program line by line.
+**Activity:** Make a table matching the C++ program and the WAT program line by line. ([Answer](Compiler-Assignment-5/fibonacci.md).)
 
 **Exercise:** Translate to Wat the program [ass_in_arith-short.cc](Compiler-Assignment-5/ass_in_arith-short.cc):
 
