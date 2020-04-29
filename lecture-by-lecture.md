@@ -86,7 +86,8 @@ For us there is another one, namely that type checking can be seen as a poor cou
 
 - [Assignment 3](https://github.com/ChapmanCPSC/compiler-assignments/blob/master/README.md). Deadlines April 13, April 20.
 
-- **Lecture 10.1:** We looked through the code of the [typechecker](https://github.com/ChapmanCPSC/compiler-assignments/blob/master/Typechecker/Haskell/src/TypeChecker.hs) with the aim of understanding to match up the typchecking rules in the [slides](Sources/4-slides-ipl-book.pdf) with the code. See also the notes on tips on Haskell linked from the README of Assignment 3. *Homework:* Read Chapter 4 of [IPL](http://www.cse.chalmers.se/edu/year/2012/course/DAT150/lectures/plt-book.pdf).
+- **Lecture 10.1:** We looked through the code of the [typechecker](https://github.com/ChapmanCPSC/compiler-assignments/blob/master/Typechecker/Haskell/src/TypeChecker.hs) with the aim of understanding to match up the typchecking rules in the [slides](Sources/4-slides-ipl-book.pdf) with the code. See also the notes on tips on Haskell linked from the README of Assignment 3. 
+*Homework:* Read Chapter 4 of [IPL](http://www.cse.chalmers.se/edu/year/2012/course/DAT150/lectures/plt-book.pdf).
 
 - **Lecture 10.2:** The recorded lecture from the afternoon session contains a detailed discussion of how to write the code for typechecking function calls.
 
@@ -95,10 +96,11 @@ For us there is another one, namely that type checking can be seen as a poor cou
 
 - **[Assignment 4](assignments.md)**: Deadlines April 22 and 29.
 
-- **Lecture 11.1:**  Interpretation is similar to typechecking in many ways. In fact, we can think of type checking as the part of interpretation (or, should we say, evaluation) that can be done at compile time. This is the topic of Chapter 5 of the book, see also the [slides](Sources/5-slides-ipl-book.pdf). In this lecture we looked at expressions, in the next lecture we will look at statements. *Homework:* Chapter 5.1-5.2 of [IPL](http://www.cse.chalmers.se/edu/year/2012/course/DAT150/lectures/plt-book.pdf) is essential reading.
+- **Lecture 11.1:**  Interpretation is similar to typechecking in many ways. In fact, we can think of type checking as the part of interpretation (or, should we say, evaluation) that can be done at compile time. This is the topic of Chapter 5 of the book, see also the [slides](Sources/5-slides-ipl-book.pdf). In this lecture we looked at expressions, in the next lecture we will look at statements. 
+*Homework:* Chapter 5.1-5.2 of [IPL](http://www.cse.chalmers.se/edu/year/2012/course/DAT150/lectures/plt-book.pdf) is essential reading.
 
 - **Lecture 11.2:**  Resources: IPL, [Chapter 5](http://www.cse.chalmers.se/edu/year/2012/course/DAT150/lectures/plt-book.pdf) and the [slides](Sources/5-slides-ipl-book.pdf) and the grammar [cpp.cf](Sources/Cpp/cpp.cf) and the interpreter template [Interpreter.hs](https://github.com/ChapmanCPSC/compiler-assignments/blob/master/Interpreter/Haskell/src/Interpreter.hs). 
-**Homework:** Chapter 5.3-5.6 of [IPL](http://www.cse.chalmers.se/edu/year/2012/course/DAT150/lectures/plt-book.pdf) is essential reading. Read Chapter 5.7 together with the template file `Interpreter.hs` and note that some of our naming conventions are slighly different. Read Chapter 5.8 as an outlook on the JVM.
+*Homework:* Chapter 5.3-5.6 of [IPL](http://www.cse.chalmers.se/edu/year/2012/course/DAT150/lectures/plt-book.pdf) is essential reading. Read Chapter 5.7 together with the template file `Interpreter.hs` and note that some of our naming conventions are slighly different. Read Chapter 5.8 as an outlook on the JVM.
 
 
 ## Part 5: Code Generation
@@ -107,4 +109,4 @@ For us there is another one, namely that type checking can be seen as a poor cou
 
 - **[Lecture 12.1](lecture-12.1.md)**: Webassembly.
 
-- ...
+- **[Lecture 12.2](lecture-12.2.md)**: Webassembly, continued.
