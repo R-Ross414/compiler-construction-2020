@@ -72,7 +72,7 @@ For the next exercise we need to know how to implement if-then-else in Webassemb
 - [typing rules](https://webassembly.github.io/spec/core/valid/instructions.html#) and
 - [operational semantics](https://webassembly.github.io/spec/core/exec/instructions.html#)
 
-but this level of detail is maybe only needed if you want to implement a compiler from Wat to Wasm. Instead look at the article
+but this level of detail is maybe only needed if you want to implement a compiler from Wat to Wasm and/or the virtual machine executing Wasm. Instead look at the article
 
 - [Writing WebAssembly By Hand](https://blog.scottlogic.com/2018/04/26/webassembly-by-hand.html)
 
@@ -89,7 +89,9 @@ and search for if then else.
     
 **Hint:** Write first a solution for Exercise 4 without if-then-else. This is basically Exercise 1. 
 
-For the next exercise, we need to think about how to implement shadowing in Webassembly. As you can see, the variable `x0` is redeclared in the branches of the conditional. One way of solving the problem is to count the levels of scope and to have two copies of `x0`, one called `x0$0` and the other `x0$10`.
+For the next exercise, we need to think about how to implement shadowing in Webassembly. Importantly, in Webassembly, all local variables in a function have to be declared at the beginning of the function. But then how do we deal with a variable like `x0` which is redeclared in  the conditional?
+
+One way of solving the problem is to count the levels of scope (= blocks) and to have two copies of `x0`, one called `x0$0` and the other `x0$1`.
 
 **Exercise 5:** Write a Webassembly program that has the same observable behaviour as [`redeclare-in-if.cc`](Compiler-Assignments-5/redeclare-in-if.cc):
 
