@@ -1,3 +1,5 @@
+*.wasm
+node-modules/
 dist
 dist-*
 cabal-dev
