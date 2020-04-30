@@ -87,6 +87,8 @@ and search for if then else.
       return x0;
     }
     
+**Hint:** Write first a solution for Exercise 4 without if-then-else. This is basically Exercise 1. 
+
 For the next exercise, we need to think about how to implement shadowing in Webassembly. As you can see, the variable `x0` is redeclared in the branches of the conditional. One way of solving the problem is to count the levels of scope and to have two copies of `x0`, one called `x0$0` and the other `x0$10`.
 
 **Exercise 5:** Write a Webassembly program that has the same observable behaviour as [`redeclare-in-if.cc`](Compiler-Assignments-5/redeclare-in-if.cc):
