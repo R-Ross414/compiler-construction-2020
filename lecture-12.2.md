@@ -4,7 +4,14 @@ We are going to practice some more Webassembly writing. The emphasis is not on l
 
 We start with variations on the program `return_in_while` from the good test programs.
 
-Go to the [wat2wasm demo](https://webassembly.github.io/wabt/demo/wat2wasm/). 
+Go to the [wat2wasm demo](https://webassembly.github.io/wabt/demo/wat2wasm/). Copy into the lower left window
+
+    const wasmInstance =
+          new WebAssembly.Instance(wasmModule, {});
+    const { main } = wasmInstance.exports;
+    console.log(main());
+    
+    
 
 **Exercise 1:** Write a Webassembly program that has the same observable behaviour as [`return-in-while-1.cc`](Compiler-Assignments-5/return-in-while-1.cc):
 
