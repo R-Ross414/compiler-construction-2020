@@ -34,6 +34,8 @@ You may have to type something in the JS window now. Then you should see 52 in t
       return 52;
     }
 
+Then change the code to return the value of `i` instead.
+
 **Remark:** The return value of `main()` can be displayed as follows.
 
     gcc return-in-while-1.cc
