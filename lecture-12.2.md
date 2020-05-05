@@ -11,7 +11,7 @@ Go to the [wat2wasm demo](https://webassembly.github.io/wabt/demo/wat2wasm/). Co
     const { main } = wasmInstance.exports;
     console.log(main());
 
-In the Wat window on the upper right copy
+In the Wat window on the upper left copy
 
     (module
      (func 
