@@ -23,7 +23,7 @@
 
 **Tests:**
 
-- [Assesment](assessment.md)
+- [Assessment](assessment.md)
 
 **Acknowledgements:**
 
