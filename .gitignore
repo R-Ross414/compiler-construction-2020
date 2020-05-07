@@ -1,5 +1,6 @@
 *.wasm
-node-modules/
+node_modules/
+a.out
 dist
 dist-*
 cabal-dev
