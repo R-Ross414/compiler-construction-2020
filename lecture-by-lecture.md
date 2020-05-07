@@ -110,3 +110,5 @@ For us there is another one, namely that type checking can be seen as a poor cou
 - **[Lecture 12.1](lecture-12.1.md)**: Webassembly.
 
 - **[Lecture 12.2](lecture-12.2.md)**: Webassembly, continued.
+
+- **[Lecture 13.1-2](https://github.com/ChapmanCPSC/compiler-assignments#assignment-compiler)**: More Details on the Compiler Assignment.
