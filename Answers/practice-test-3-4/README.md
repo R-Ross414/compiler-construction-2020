@@ -4,6 +4,8 @@ For further practice make your own variations of little programs and send me pic
 
 ## Q1
 
+### a)
+
 I divded the answer in 3 pictures to show some of the method by which the tree is obtained.
 
 First, you need to draw the abstract syntax tree, at least in your mind.
@@ -35,7 +37,17 @@ The last bullet point still needs to be performed on the third picture for a com
 
 - I recommend sketching the abstract syntax tree first.
 
+### b)
+
+`y` must be in the context Gamma, see item a).
+
+### c)
+
+the value of `x` will be 2 and the value of `y` will be 4.
+
 ## Q2
+
+### a)
 
 The proof tree that traces the operational steps of the interpreter is to be written and read in the same recursive manner. 
 
@@ -43,5 +55,11 @@ I drawn out the  [abstract syntax tree](Test-3-4-ast.jpg) and labelled it with c
 
 In the [proof tree](Test-3-4-2-1.jpg) I highlighted in red the part of the tree that is written while "going down".
 
+### b)
 
+You can answer this question yourself by compiling and running the C++ code.
+
+But first you should answer the question for yourself by drawing out the proof tree.
+
+Then compare the results you get from the proof tree and from running the C++ program.
 
