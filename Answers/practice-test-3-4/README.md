@@ -37,6 +37,8 @@ The last bullet point still needs to be performed on the third picture for a com
 
 - I recommend sketching the abstract syntax tree first.
 
+**Further Exercise**: Label all the horizontal lines in the proof tree with the typing rules that justify them.
+
 ### b)
 
 `y` must be in the context Gamma, see item a).
@@ -54,6 +56,8 @@ The proof tree that traces the operational steps of the interpreter is to be wri
 I drawn out the  [abstract syntax tree](Test-3-4-ast.jpg) and labelled it with concrete syntax for better readability. 
 
 In the [proof tree](Test-3-4-2-1.jpg) I highlighted in red the part of the tree that is written while "going down".
+
+**Further Exercise**: Label all the horizontal lines in the proof tree with the operational semantics rules that justify them.
 
 ### b)
 
