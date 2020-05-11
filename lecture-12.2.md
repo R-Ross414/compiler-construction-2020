@@ -93,7 +93,7 @@ For the next exercise, we need to think about how to implement shadowing in Weba
 
 One way of solving the problem is to count the levels of scope (= blocks) and to have two copies of `x0`, one called `x0$0` and the other `x0$1`.
 
-**Exercise 5:** Write a Webassembly program that has the same observable behaviour as [`redeclare-in-if.cc`](Compiler-Assignments-5/redeclare-in-if.cc):
+**Exercise 5:** Write a Webassembly program that has the same observable behaviour as [`redeclare-in-if.cc`](Compiler-Assignment-5/redeclare-in-if.cc):
 
     int main () {
       int x0 = 32 ;
@@ -102,3 +102,4 @@ One way of solving the problem is to count the levels of scope (= blocks) and to
       return x0;
     }
     
+Solutions are available in [Compiler-Assignment-5](Compiler-Assignment-5). If you look at [`redeclare-in-if.wat`](Compiler-Assignment-5/redeclare-in-if.wat) you will find that all the declarations have been collected to the beginning of the function. This is done in the compiler by the function `collectDecls`.
