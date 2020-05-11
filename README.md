@@ -32,3 +32,8 @@ This course was developed for the students at Chapman University by myself and S
 We are grateful that most of what we wanted to cover had already been developed by Aarne Ranta, whose book "Implementing Programming Languages" is the main reference for this course and whose assignments form its core. I am also very grateful to Andreas Abel who took over teaching Ranta's course at Chalmers and who answered a number of my questions. 
 
 As always, I am grateful to my colleagues from whom I learned myself. Regular discussions with Peter Jipsen and Drew Moshier keep influencting the content and style of the course.
+
+**Various Links**:
+
+- [minimal reproducible examples](https://stackoverflow.com/help/minimal-reproducible-example)
+- [Java vs Python](https://stackoverflow.com/questions/441824/java-virtual-machine-vs-python-interpreter-parlance/1732383#1732383)

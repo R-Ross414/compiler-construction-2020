@@ -20,4 +20,4 @@ I collect here some lessons learned from using git for [assignments](assignments
 The links below are written for more complex projects than a typical assignment, but it cannot harm to have a look:
 
 - [Commit Often, Perfect Later, Publish Once: Git Best Practices](https://sethrobertson.github.io/GitBestPractices/)
-
+- [Examples of gitignore files](https://github.com/github/gitignore)
