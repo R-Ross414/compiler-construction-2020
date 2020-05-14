@@ -21,3 +21,7 @@ The links below are written for more complex projects than a typical assignment,
 
 - [Commit Often, Perfect Later, Publish Once: Git Best Practices](https://sethrobertson.github.io/GitBestPractices/)
 - [Examples of gitignore files](https://github.com/github/gitignore)
+-  Some pages from the git documentation:
+  - [Getting a Git Repository (clone)](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository)
+  - [Working with Remotes](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes)
+  - [Contributing to a Project (fork)](https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project)
