@@ -81,21 +81,23 @@ Now we can run `fibonacci.wasm`:
 
 ### Test Webassembly code against C++
 
-To test whether the translation `fibonacci.wat` has the same observable behaviour as `fibonacci.cc`, we can do the following.
+To test whether the translation `fibonacci.wat` has the same observable behaviour as `fibonacci.cc`, run the two programs as follows.
+
+#### Run the C++ program
 
 - add the header `#include "env.h"` to `fibonnaci.cc`
-- make sure you have `env.h`
+- make sure you have `env.h`, see [here](Compiler-Assignment-5/env.h)
 - observe the behaviour of the C++ program:
 
       gcc fibonacci.cc -o fibonacci
       ./fibonnacci
 
+#### Run the Wat program
 - observe the behaviour of the Wasm program:
 
-        node wat2wasn.js fibonacci.wat
+        node wat2wasm.js fibonacci.wat
         node run.js fibonacci.wasm
   
-- compare the results
 
 ## Stack-based languages
 
